@@ -1,22 +1,29 @@
 import React from "react";
-
-const project = {
-    id: 1,
-    title: "She-Ra",
-    series: "She-Ra and The Princesses of Power",
-    due_date: "07-31-2021",
-    budget: 150.25,
-    completed: false
-}
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link,
+    withRouter
+} from 'react-router-dom';
 
 function Project(props) {
+
+    // const getDashboardElements = projectData.map((project) => {
+    //     return (<Dashboard project_id={project.id} title={project.title} series={project.series} photo={project.photo} budget={project.budget}/>)
+    // });
+
     return (
-        <div class="card">
-            <img src="http://placehold.it/900x400" class="card-img-top" alt=""></img>
-            <div class="card-body">
-                <p class="card-text fw-bold">{project.title}</p>
-                <p class="card-text fst-italic">{project.series}</p>
-            </div>
+        <div className="col-lg-4">
+            <Link className="navbar-brand" to={`/dashboard/${props.project_id}`}>
+                <div className="card">
+                    <img src={props.photo} className="card-img-top" alt=""></img>
+                    <div className="card-body">
+                        <p className="card-text fw-bold">{props.title}</p>
+                        <p className="card-text fst-italic">{props.series}</p>
+                    </div>
+                </div>
+            </Link>
         </div>
     );
     }

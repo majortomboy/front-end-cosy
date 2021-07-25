@@ -18,7 +18,7 @@ function Navigation(props) {
                     props.location.pathname === "/" ? "active" : ""
                 }`}
                 >
-                <Link class="nav-link" to="/">
+                <Link className="nav-link" to="/">
                     Home
                     {/* <span class="sr-only">(current)</span> */}
                 </Link>

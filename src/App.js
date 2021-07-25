@@ -22,7 +22,7 @@ function App() {
         <Switch>
           <Route path="/" exact component={() => <ProjectList />} />
           <Route path="/about" exact component={() => <About />} />
-          <Route path="/dashboard" exact component={() => <Dashboard />} />
+          <Route path="/dashboard/:id" exact component={Dashboard} />
         </Switch>
       <Footer />
     </Router>
