@@ -3,15 +3,10 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link,
-    withRouter
+    Link
 } from 'react-router-dom';
 
 function Project(props) {
-
-    // const getDashboardElements = projectData.map((project) => {
-    //     return (<Dashboard project_id={project.id} title={project.title} series={project.series} photo={project.photo} budget={project.budget}/>)
-    // });
 
     return (
         <div className="col-lg-4">

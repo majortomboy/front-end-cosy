@@ -22,7 +22,9 @@ function Dashboard() {
 
     useEffect(() => {
         getDashboardInfo();
-    })
+    }, [])
+
+    // How am I supposed to use the dependency array here?
 
     return (
         <div>
