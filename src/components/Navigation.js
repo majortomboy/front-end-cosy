@@ -7,7 +7,7 @@ function Navigation(props) {
     <div className="navigation">
         <nav className="navbar navbar-expand navbar-light bg-secondary">
         <div className="container">
-            <Link className="navbar-brand" to="/">
+            <Link className="navbar-brand" to="/projects">
                 <img src={logo} alt="logo" width="150"></img>
             </Link>
 
@@ -15,12 +15,11 @@ function Navigation(props) {
             <ul className="navbar-nav ml-auto">
                 <li
                 className={`nav-item  ${
-                    props.location.pathname === "/" ? "active" : ""
+                    props.location.pathname === "/projects" ? "active" : ""
                 }`}
                 >
-                <Link className="nav-link" to="/">
-                    Home
-                    {/* <span class="sr-only">(current)</span> */}
+                <Link className="nav-link" to="/projects">
+                    Projects
                 </Link>
                 </li>
                 <li className={`nav-item  ${

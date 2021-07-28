@@ -16,7 +16,7 @@ function ProjectList() {
     const toggleModal = () => {setIsModalVisible(!isModalVisible)}
 
     const getProjects = () => {
-        axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/projects`)
+        axios.get(`${process.env.REACT_APP_BACKEND_URL}/projects`)
             .then((response) => {
                 console.log(response.data);
                 const newProjectData = response.data;
@@ -39,7 +39,7 @@ function ProjectList() {
     // Where does this get passed in/called?
     // Should this be passed as a prop to a create project button component?
     const createNewProject = (newProject) => {
-        axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/projects/`, newProject)
+        axios.post(`${process.env.REACT_APP_BACKEND_URL}/projects/`, newProject)
             .then((response) => {
                 console.log(response.data);
                 const newProjectData = response.data
@@ -60,7 +60,7 @@ function ProjectList() {
         <div className="home">
         <div className="container">
             {/* When I click this button, I want the modal to open */}
-            <button className="btn-primary my-3" onClick={toggleModal}>
+            <button className="btn btn-primary my-3" onClick={toggleModal}>
                 + Project
             </button>
                 {isModalVisible ? <NewProjectForm createNewProject={createNewProject}></NewProjectForm> : ''}

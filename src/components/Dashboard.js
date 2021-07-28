@@ -1,15 +1,18 @@
 import { React, useState, useEffect } from "react";
 import axios from "axios";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import Part from "./Part"
+import SideNavigation from "./SideNavigation";
 
 function Dashboard() {
 
     let { id } = useParams();
 
     const [dashboardData, setDashboardData] = useState([]);
+    const [partsData, setPartsData] = useState([]);
 
     const getDashboardInfo = () => {
-        axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/projects/${id}`)
+        axios.get(`${process.env.REACT_APP_BACKEND_URL}/projects/${id}`)
             .then((response) => {
                 console.log(response.data);
                 const newDashboardData = response.data;
@@ -22,72 +25,49 @@ function Dashboard() {
 
     useEffect(() => {
         getDashboardInfo();
+
     }, [])
 
-    // How am I supposed to use the dependency array here?
+    const getParts = () => {
+        axios.get(`${process.env.REACT_APP_BACKEND_URL}/projects/${id}/parts`)
+            .then((response) => {
+                console.log(response.data)
+                // const newPartsData = partsData.filter((part) => {
+                //     return part.project === id;
+                // });
+
+                // I only want it to display the parts associated with the same project id (response.data.project?)
+                const newPartsData = response.data
+                setPartsData(newPartsData);
+                // console.log(partsData);
+                })
+            .catch((error) => {
+                console.log("Error:", error);
+            });
+    };
+
+    useEffect(() => {
+        getParts();
+
+    }, [])
+
+    const displayParts = partsData.map((part) => {
+        return (<Part part_id={part.id} name={part.name}/>)
+    });
 
     return (
         <div className="container-fluid">
             <div className="row">
-                <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar text-start">
-                    <ul class="nav flex-column my-5">
-                        <li class="nav-item">
-                            <Link class="nav-link active h5" to={`/dashboard/${id}/todo/`}>
-                                <span class="ml-2">To Do List</span>
-                            </Link>
-                        </li>
-                        <li class="nav-item">
-                            <Link class="nav-link h5" to={`/dashboard/${id}/tobuy/`}>
-                                <span class="ml-2">To Buy List</span>
-                            </Link>
-                        </li>
-                        <li class="nav-item">
-                            <Link class="nav-link h5" to={`/dashboard/${id}/references/`}>
-                                <span class="ml-2">Reference Photos</span>
-                            </Link>
-                        </li>
-                        <li class="nav-item">
-                            <Link class="nav-link h5" to={`/dashboard/${id}/resources/`}>
-                                <span class="ml-2">Resources</span>
-                            </Link>
-                        </li>
-                        <li class="nav-item">
-                            <Link class="nav-link h5" to={`/dashboard/${id}/settings/`}>
-                                <span class="ml-2">Settings</span>
-                            </Link>
-                        </li>
-                    </ul>
-                </nav>
+                <SideNavigation id={id}/>
             <main className="col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4">
                 <h1 className="h2 flex-column">Project Dashboard - {dashboardData.title}</h1>
                 <div className="row border border-primary">
                     <div className="col">
-                        <img className="rounded border border-primary h-50" src="https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-images-image_large.png?format=webp&v=1530129081" alt="placeholder"/>
+                        <img className="rounded border border-primary h-50" src={dashboardData.photo} alt="placeholder"/>
                         <div className="row">
                             <div className="row border border-warning">
                                 <h4>Parts</h4>
-                                <ul className="list-group text-start">
-                                    <li className="list-group-item">
-                                        <input className="form-check-input me-1" type="checkbox" value=""></input>
-                                        First Checkbox
-                                    </li>
-                                    <li className="list-group-item">
-                                        <input className="form-check-input me-1" type="checkbox" value=""></input>
-                                        Second Checkbox
-                                    </li>
-                                    <li className="list-group-item">
-                                        <input className="form-check-input me-1" type="checkbox" value=""></input>
-                                        Third Checkbox
-                                    </li>
-                                    <li className="list-group-item">
-                                        <input className="form-check-input me-1" type="checkbox" value=""></input>
-                                        Fourth Checkbox
-                                    </li>
-                                    <li className="list-group-item">
-                                        <input className="form-check-input me-1" type="checkbox" value=""></input>
-                                        Fifth Checkbox
-                                    </li>
-                                </ul>
+                                {displayParts}
                             </div>
                         </div>
                     </div>
@@ -110,7 +90,6 @@ function Dashboard() {
                                 <p>0 %</p>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
