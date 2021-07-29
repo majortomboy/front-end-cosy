@@ -52,7 +52,7 @@ function Dashboard() {
     }, [])
 
     const displayParts = partsData.map((part) => {
-        return (<Part part_id={part.id} name={part.name}/>)
+        return (<Part part_id={part.id} name={part.name} project={part.project}/>)
     });
 
     return (

@@ -65,7 +65,9 @@ function ProjectList() {
             </button>
                 {isModalVisible ? <NewProjectForm createNewProject={createNewProject}></NewProjectForm> : ''}
             <div className="row align-items-center my-5 mx-5">
-                {projectElements}
+                <div className="card-group">
+                    {projectElements}
+                </div>
             </div>
             </div>
         </div>

@@ -18,6 +18,7 @@ const NewProjectForm = (props) => {
         due_date: '',
         budget: '',
         complted: false,
+        photo: null,
 
     });
 
@@ -59,6 +60,13 @@ const NewProjectForm = (props) => {
         });
     }
 
+    const onPhotoChange = (e) => {
+        setFormFields({
+            ...formFields,
+            photo: e.target.value
+        });
+    }
+
     const onFormSubmit = (e) => {
         e.preventDefault();
 
@@ -67,6 +75,7 @@ const NewProjectForm = (props) => {
             series: formFields.series,
             due_date: formFields.due_date,
             budget: formFields.budget,
+            photo: formFields.photo,
         });
 
         setFormFields({
@@ -75,6 +84,7 @@ const NewProjectForm = (props) => {
             due_date: '',
             budget: '',
             completed: false,
+            photo: null,
         });
     }
 
@@ -119,6 +129,13 @@ const NewProjectForm = (props) => {
                             type="checkbox"
                             value={formFields.completed}
                             onChange={onCompletedChange} />
+                </FormGroup>
+                <FormGroup>
+                    <Label for="photo">Photo</Label>
+                        <Input
+                            type="file"
+                            value={formFields.photo}
+                            onChange={onPhotoChange} />
                 </FormGroup>
                 <Input type="Submit" className="btn-success" />
             </Form>
