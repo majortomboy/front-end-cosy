@@ -14,6 +14,7 @@ import About from "./components/About";
 import Dashboard from './components/Dashboard';
 import Part from './components/Part';
 import ToDoList from './components/ToDoList';
+import ToBuyList from './components/ToBuyList';
 
 function App() {
   return (
@@ -26,7 +27,7 @@ function App() {
           <Route path="/dashboard/:id" exact component={Dashboard} />
           <Route path="/dashboard/:id/parts" exact component={Part} />
           <Route path="/dashboard/:id/todo" exact component={ToDoList} />
-          {/* <Route path="/dashboard/:id/tobuy" exact component={ToBuyList} /> */}
+          <Route path="/dashboard/:id/tobuy" exact component={ToBuyList} />
           {/* <Route path="/dashboard/:id/references" exact component={References} /> */}
         </Switch>
       <Footer />

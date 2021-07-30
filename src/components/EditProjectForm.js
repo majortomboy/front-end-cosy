@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from "react";
+import { React, useEffect, useState } from "react";
 import {
     Button,
     Modal,
@@ -11,29 +11,29 @@ import {
     Label
 } from "reactstrap";
 
-const NewProjectForm = (props) => {
+const EditProjectForm = (props) => {
     const [formFields, setFormFields] = useState({
-        title: '',
-        series: '',
-        due_date: '',
-        budget: '',
-        complted: false,
-        photo: null,
+        title: props.title,
+        series: props.series,
+        due_date: props.due_date,
+        budget: props.budget,
+        completed: props.completed,
+        photo: props.photo,
 
     });
 
     useEffect(() => {
         setFormFields({
-            title: '',
-            series: '',
-            due_date: '',
-            budget: '',
-            complted: false,
-            photo: null,
-
+            title: props.title,
+            series: props.series,
+            due_date: props.due_date,
+            budget: props.budget,
+            completed: props.completed,
+            photo: props.photo,
         });
     }, [props])
 
+    console.log({formFields, props})
     // State for modal being open or closed
     const [modal, setModal] = useState(false);
 
@@ -84,29 +84,21 @@ const NewProjectForm = (props) => {
     const onFormSubmit = (e) => {
         e.preventDefault();
 
-        props.createNewProject({
+        props.editProject({
             title: formFields.title,
             series: formFields.series,
             due_date: formFields.due_date,
             budget: formFields.budget,
+            completed: formFields.completed,
             photo: formFields.photo,
-        });
-
-        setFormFields({
-            title: '',
-            series: '',
-            due_date: '',
-            budget: '',
-            completed: false,
-            photo: null,
         });
     }
 
         return (
-            <div className="col-lg-12 mt-5 text-end">
-            <Button color="primary" onClick={toggle} className="btn btn-primary">+ Project</Button>
+            <div className="col-lg-12 my-3 text-end">
+            <Button color="primary" onClick={toggle} className="btn btn-primary">Edit</Button>
             <Modal isOpen={modal} toggle={toggle}>
-                <ModalHeader toggle={toggle}>New Project</ModalHeader>
+                <ModalHeader toggle={toggle}>Edit Project</ModalHeader>
                 <ModalBody>
                     <Form onSubmit={onFormSubmit} className="text-start">
                         <FormGroup>
@@ -148,13 +140,13 @@ const NewProjectForm = (props) => {
                                     value={formFields.completed}
                                     onChange={onCompletedChange} />
                         </FormGroup>
-                        {/* <FormGroup>
+                        <FormGroup>
                             <Label for="photo">Photo</Label>
                                 <Input
                                     type="file"
                                     value={formFields.photo}
                                     onChange={onPhotoChange} />
-                        </FormGroup> */}
+                        </FormGroup>
                         <Input type="Submit" className="btn btn-success">
                         Save
                         </Input>
@@ -165,4 +157,4 @@ const NewProjectForm = (props) => {
         );
     }
 
-export default NewProjectForm;
+export default EditProjectForm;

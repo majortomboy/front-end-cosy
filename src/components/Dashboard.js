@@ -1,8 +1,10 @@
 import { React, useState, useEffect } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { Redirect, useParams } from "react-router-dom";
 import Part from "./Part"
 import SideNavigation from "./SideNavigation";
+import EditProjectForm from "./EditProjectForm";
+import DeleteButton from "./DeleteButton";
 
 function Dashboard() {
 
@@ -28,18 +30,40 @@ function Dashboard() {
 
     }, [])
 
+    const editDashboardInfo = (project) => {
+        console.log(project)
+        axios.put(`${process.env.REACT_APP_BACKEND_URL}/projects/${id}/`, project)
+            .then((response) => {
+                console.log(response.data);
+                const newDashboardData = response.data;
+
+                setDashboardData(newDashboardData)
+            })
+            .catch((error) => {
+                console.log(error);
+                alert("Unable to edit project.");
+            });
+    }
+
+    const deleteProject = (project) => {
+        axios.delete(`${process.env.REACT_APP_BACKEND_URL}/projects/${id}/`, project)
+            .then((response) => {
+                console.log(response.data);
+                alert("Project deleted.");
+                // <Redirect to="/projects"></Redirect>
+            })
+            .catch((error) => {
+                console.log(error);
+                alert("Unable to delete project.");
+            })
+    }
+
     const getParts = () => {
         axios.get(`${process.env.REACT_APP_BACKEND_URL}/projects/${id}/parts`)
             .then((response) => {
                 console.log(response.data)
-                // const newPartsData = partsData.filter((part) => {
-                //     return part.project === id;
-                // });
-
-                // I only want it to display the parts associated with the same project id (response.data.project?)
                 const newPartsData = response.data
                 setPartsData(newPartsData);
-                // console.log(partsData);
                 })
             .catch((error) => {
                 console.log("Error:", error);
@@ -61,6 +85,7 @@ function Dashboard() {
                 <SideNavigation id={id}/>
             <main className="col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4">
                 <h1 className="h2 flex-column">Project Dashboard - {dashboardData.title}</h1>
+                        {<EditProjectForm project_id={id} title={dashboardData.title} series={dashboardData.series} due_date={dashboardData.due_date} budget={dashboardData.budget} editProject={editDashboardInfo}></EditProjectForm>}
                 <div className="row border border-primary">
                     <div className="col">
                         <img className="rounded border border-primary h-50" src={dashboardData.photo} alt="placeholder"/>
@@ -93,6 +118,9 @@ function Dashboard() {
                         </div>
                     </div>
                 </div>
+                    <div class="row">
+                        {<DeleteButton deleteProject={deleteProject}></DeleteButton>}
+                    </div>
                 <div>
                 </div>
             </main>
