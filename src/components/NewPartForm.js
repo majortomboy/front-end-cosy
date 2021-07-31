@@ -45,6 +45,8 @@ const NewPartForm = (props) => {
         setFormFields({
             name: '',
         });
+
+        setModal(false);
     }
 
         return (

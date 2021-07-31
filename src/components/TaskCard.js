@@ -6,6 +6,7 @@ import axios from "axios";
 // } from 'react-router-dom';
 import Task from "./Task";
 import NewTaskForm from "./NewTaskForm";
+import DeleteButton from "./DeleteButton";
 
 const TaskCard = (props) => {
 
@@ -51,10 +52,23 @@ const TaskCard = (props) => {
         return (<Task task_id={task.id} description={task.description} completed={task.completed} part_id={task.part} />)
     });
 
+    const deletePart = (part) => {
+        axios.delete(`${process.env.REACT_APP_BACKEND_URL}/parts/${props.part_id}/`, part)
+            .then((response) => {
+                console.log(response.data);
+                alert("Part deleted.");
+            })
+            .catch((error) => {
+                console.log(error);
+                alert("Unable to delete project.");
+            })
+    }
+
     return (
             <div className="col-lg-4">
                 <div className="card my-3 mx-3">
                     <h5>{props.name}</h5>
+                    <button className="btn btn-danger" onClick={deletePart}>Delete</button>
                     <ul className="list-group text-start">
                         {taskElements}
                     </ul>

@@ -56,7 +56,7 @@ function ToDoList() {
     // Should this be passed as a prop to a create project button component?
 
     const toDoListElements = toDoListData.map((part) => {
-        return (<TaskCard part_id={part.id} name={part.name} />)
+        return (<TaskCard part_id={part.id} name={part.name}/>)
     });
 
     // const editPartInfo = (part) => {

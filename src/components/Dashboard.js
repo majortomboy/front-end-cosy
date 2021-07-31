@@ -119,7 +119,7 @@ function Dashboard() {
                     </div>
                 </div>
                     <div class="row">
-                        {<DeleteButton deleteProject={deleteProject}></DeleteButton>}
+                        {<DeleteButton delete={deleteProject}></DeleteButton>}
                     </div>
                 <div>
                 </div>

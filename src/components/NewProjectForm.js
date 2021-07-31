@@ -100,6 +100,8 @@ const NewProjectForm = (props) => {
             completed: false,
             photo: null,
         });
+
+        setModal(false);
     }
 
         return (

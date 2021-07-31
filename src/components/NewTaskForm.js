@@ -57,6 +57,8 @@ const NewTaskForm = (props) => {
             description: '',
             completed: false,
         });
+
+        setModal(false);
     }
 
         return (

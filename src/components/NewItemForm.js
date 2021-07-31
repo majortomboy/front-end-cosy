@@ -79,6 +79,8 @@ const NewItemForm = (props) => {
             link: '',
             completed: false,
         });
+
+        setModal(false);
     }
 
         return (

@@ -92,6 +92,8 @@ const EditProjectForm = (props) => {
             completed: formFields.completed,
             photo: formFields.photo,
         });
+
+        setModal(false);
     }
 
         return (
