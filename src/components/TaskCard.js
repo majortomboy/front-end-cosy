@@ -6,16 +6,19 @@ import axios from "axios";
 // } from 'react-router-dom';
 import Task from "./Task";
 import NewTaskForm from "./NewTaskForm";
-import DeleteButton from "./DeleteButton";
+// import DeleteButton from "./DeleteButton";
+import EditPartForm from "./EditPartForm";
 
 const TaskCard = (props) => {
 
     const [taskData, setTaskData] = useState([]);
+    const [partNameData, setPartNameData] = useState(props.name);
+    // console.log(partNameData)
 
     const getTasks = () => {
         axios.get(`${process.env.REACT_APP_BACKEND_URL}/parts/${props.part_id}/tasks/`)
             .then((response) => {
-                console.log(response.data);
+                // console.log(response.data);
                 const newTaskData = response.data;
                 setTaskData(newTaskData);
             })
@@ -33,12 +36,12 @@ const TaskCard = (props) => {
         console.log(newTask)
         axios.post(`${process.env.REACT_APP_BACKEND_URL}/tasks/`, newTask)
             .then((response) => {
-                console.log(response.data);
+                // console.log(response.data);
                 const newTaskData = response.data
                 const newData = [...taskData]
 
                 newData.push(newTaskData)
-                console.log(newData);
+                // console.log(newData);
 
                 setTaskData(newData)
             })
@@ -52,6 +55,21 @@ const TaskCard = (props) => {
         return (<Task task_id={task.id} description={task.description} completed={task.completed} part_id={task.part} />)
     });
 
+    const editPart = (part) => {
+        // console.log(props.part_id)
+        axios.put(`${process.env.REACT_APP_BACKEND_URL}/parts/${props.part_id}/`, part)
+            .then((response) => {
+                console.log(response.data.name);
+                const newPartNameData = response.data.name;
+
+                setPartNameData(newPartNameData)
+            })
+            .catch((error) => {
+                console.log(error);
+                alert("Unable to edit part.");
+            });
+    }
+
     const deletePart = (part) => {
         axios.delete(`${process.env.REACT_APP_BACKEND_URL}/parts/${props.part_id}/`, part)
             .then((response) => {
@@ -60,15 +78,16 @@ const TaskCard = (props) => {
             })
             .catch((error) => {
                 console.log(error);
-                alert("Unable to delete project.");
+                alert("Unable to delete part.");
             })
     }
 
     return (
             <div className="col-lg-4">
                 <div className="card my-3 mx-3">
-                    <h5>{props.name}</h5>
-                    <button className="btn btn-danger" onClick={deletePart}>Delete</button>
+                    <h5>{partNameData}</h5>
+                    {<EditPartForm part_id={props.part_id} name={props.name} project={props.project} editPart={editPart}></EditPartForm>}
+                    <button className="btn btn-danger" onClick={deletePart}>Delete Part</button>
                     <ul className="list-group text-start">
                         {taskElements}
                     </ul>

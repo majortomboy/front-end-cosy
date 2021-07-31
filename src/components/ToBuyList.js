@@ -50,7 +50,7 @@ function ToBuyList() {
     }
 
     const toBuyListElements = toBuyListData.map((item) => {
-        return (<ToBuyItem item_id={item.id} description={item.description} price={item.price} link={item.link} completed={item.completed} project_id={item.project} />)
+        return (<ToBuyItem item_id={item.id} description={item.description} price={item.price} link={item.link} completed={item.completed} project_id={id} />)
     });
 
     return (
@@ -66,11 +66,12 @@ function ToBuyList() {
                 <table className="table table-striped table-hover">
                     <thead className="table-secondary">
                         <tr>
-                            <th scope="col">#</th>
                             <th scope="col">Purchased</th>
                             <th scope="col">Item</th>
                             <th scope="col">Price</th>
                             <th scope="col">Link</th>
+                            <th scope="col">Edit</th>
+                            <th scope="col">Delete</th>
                         </tr>
                     </thead>
                     <tbody>
