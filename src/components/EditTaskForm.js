@@ -58,7 +58,7 @@ const EditTaskForm = (props) => {
 
         return (
             <div className="col-lg-12 my-3 text-end">
-            <Button color="primary" onClick={toggle} className="btn btn-primary">Edit Task</Button>
+            <Button color="none" onClick={toggle} className="btn button-outline-light"><i class="bi bi-pencil-square"></i></Button>
             <Modal isOpen={modal} toggle={toggle}>
                 <ModalHeader toggle={toggle}>Edit Part</ModalHeader>
                 <ModalBody>

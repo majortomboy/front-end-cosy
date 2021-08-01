@@ -65,7 +65,7 @@ function ToBuyList() {
                     </div>
                 <table className="table table-striped table-hover">
                     <thead className="table-secondary">
-                        <tr>
+                        <tr className="">
                             <th scope="col">Purchased</th>
                             <th scope="col">Item</th>
                             <th scope="col">Price</th>

@@ -85,9 +85,12 @@ const TaskCard = (props) => {
     return (
             <div className="col-lg-4">
                 <div className="card my-3 mx-3">
-                    <h5>{partNameData}</h5>
-                    {<EditPartForm part_id={props.part_id} name={props.name} project={props.project} editPart={editPart}></EditPartForm>}
-                    <button className="btn btn-danger" onClick={deletePart}>Delete Part</button>
+                    <div className="row">
+                        <div className="column">
+                            <h5>{partNameData} {<EditPartForm part_id={props.part_id} name={props.name} project={props.project} editPart={editPart} deletePart={deletePart}></EditPartForm>}</h5>
+                        </div>
+                    </div>
+                    {/* <button className="btn btn-danger" onClick={deletePart}><i className="bi bi-trash" aria-hidden="true"></i></button> */}
                     <ul className="list-group text-start">
                         {taskElements}
                     </ul>

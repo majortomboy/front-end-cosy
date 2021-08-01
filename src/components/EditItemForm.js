@@ -77,8 +77,8 @@ const EditItemForm = (props) => {
     }
 
         return (
-            <div className="col-lg-12 my-3 text-start">
-            <Button color="primary" onClick={toggle} className="btn btn-primary">Edit Item</Button>
+            <div>
+            <Button color="none" onClick={toggle} className="btn"><i class="bi bi-pencil-square"></i></Button>
             <Modal isOpen={modal} toggle={toggle}>
                 <ModalHeader toggle={toggle}>Edit Item</ModalHeader>
                 <ModalBody>

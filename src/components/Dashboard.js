@@ -5,6 +5,8 @@ import Part from "./Part"
 import SideNavigation from "./SideNavigation";
 import EditProjectForm from "./EditProjectForm";
 import DeleteButton from "./DeleteButton";
+import CompletionChart from "./CompletionChart";
+import BudgetChart from "./BudgetChart";
 
 function Dashboard() {
 
@@ -81,37 +83,48 @@ function Dashboard() {
 
     return (
         <div className="container-fluid">
-            <div className="row">
+            <div className="row border border-primary">
                 <SideNavigation id={id}/>
-            <main className="col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4">
+            <main className="col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4 border border-secondary">
                 <h1 className="h2 flex-column">Project Dashboard - {dashboardData.title}</h1>
                         {<EditProjectForm project_id={id} title={dashboardData.title} series={dashboardData.series} due_date={dashboardData.due_date} budget={dashboardData.budget} editProject={editDashboardInfo}></EditProjectForm>}
                 <div className="row border border-primary">
-                    <div className="col">
-                        <img className="rounded border border-primary h-50" src={dashboardData.photo} alt="placeholder"/>
+                    <div className="col-lg-4 border border-warning">
                         <div className="row">
+                            <img className="rounded border border-primary h-50" src={dashboardData.photo} alt="character"/>
+                        </div>
+                        <div className="row">
+                            <div className="col"></div>
                             <div className="row border border-warning">
-                                <h4>Parts</h4>
-                                {displayParts}
+                                <div className="col">
+                                    <h4>Parts</h4>
+                                    {displayParts}
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div className="col border border-secondary">
+                    <div className="col-lg-8 border border-secondary">
                         <div className="row border border-primary text-start">
+                            <div className="col">
                             <h4>{dashboardData.title}</h4>
-                            <p className=" fst-italic">{dashboardData.series}</p>
+                            <p className="fst-italic">{dashboardData.series}</p>
                             <p className="fw-bold">Due Date: {dashboardData.due_date}</p>
+                            </div>
                         </div>
-                        <div className="row my-5 border border-danger">
-                            <div className="col mx-3">
+                        <div className="row my-5">
+                            <div className="col-lg-5 mx-3">
                                 <div className="card">
                                 <h4 className="card-header">Budget</h4>
+                                    {<BudgetChart></BudgetChart>}
+                                    <br></br>
                                     <p>${dashboardData.budget}</p>
                                 </div>
                             </div>
-                            <div className="col mx-3">
+                            <div className="col-lg-5 mx-3">
                                 <div className="card">
-                                <h4 className="card-header">Completion Status</h4>
+                                <h4 className="card-header">Completion</h4>
+                                {<CompletionChart></CompletionChart>}
+                                <br></br>
                                 <p>0 %</p>
                                 </div>
                             </div>

@@ -53,11 +53,11 @@ function ProjectList() {
         <div className="home">
         <div className="container">
             <div className="row">
-                <div className="col-lg-10 text-end">
+                <div className="col-lg-11">
                     {<NewProjectForm createNewProject={createNewProject}></NewProjectForm>}
                 </div>
             </div>
-            <div className="row align-items-center my-5 mx-5">
+            <div className="row my-5 mx-5">
                 <div className="card-group">
                     {projectElements}
                 </div>

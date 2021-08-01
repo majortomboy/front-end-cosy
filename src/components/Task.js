@@ -43,8 +43,8 @@ function Task(props) {
         <li className="list-group-item">
             <input className="form-check-input me-1" type="checkbox" value=""></input>
             {taskData.description}
-            {<EditTaskForm task_id={taskData.task_id} description={taskData.description} completed={taskData.completed} part_id={props.part_id} editTask={editTask}></EditTaskForm>}
-            {<button className="btn btn-danger" onClick={deleteTask}>Delete Task</button>}
+            <span><EditTaskForm task_id={taskData.task_id} description={taskData.description} completed={taskData.completed} part_id={props.part_id} editTask={editTask}></EditTaskForm></span>
+            <span color="none" className="btn d-inline-block float-right" onClick={props.delete}><i className="bi bi-trash" aria-hidden="true"></i></span>
         </li>
     )
 }

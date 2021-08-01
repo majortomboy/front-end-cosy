@@ -47,8 +47,8 @@ const EditPartForm = (props) => {
     }
 
         return (
-            <div className="col-lg-12 my-3 text-end">
-            <Button color="primary" onClick={toggle} className="btn btn-primary">Edit Part</Button>
+            <span>
+            <Button color="none" onClick={toggle} className="btn button-outline-light"><i class="bi bi-pencil-square"></i></Button>
             <Modal isOpen={modal} toggle={toggle}>
                 <ModalHeader toggle={toggle}>Edit Part</ModalHeader>
                 <ModalBody>
@@ -64,10 +64,11 @@ const EditPartForm = (props) => {
                         <Input type="Submit" className="btn btn-success">
                         Save
                         </Input>
+                        <button className="btn btn-danger" onClick={props.deletePart}><i className="bi bi-trash" aria-hidden="true"></i></button>
                     </Form>
                 </ModalBody>
             </Modal>
-            </div>
+            </span>
         );
     }
 
