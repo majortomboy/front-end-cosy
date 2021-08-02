@@ -4,12 +4,12 @@ import {
     Modal,
     ModalHeader,
     ModalBody,
-    ModalFooter,
     Form,
     FormGroup,
     Input,
     Label
 } from "reactstrap";
+import axios from "axios";
 
 const NewProjectForm = (props) => {
     const [formFields, setFormFields] = useState({
@@ -18,7 +18,7 @@ const NewProjectForm = (props) => {
         due_date: '',
         budget: '',
         complted: false,
-        photo: null,
+        photo: '',
 
     });
 
@@ -29,7 +29,7 @@ const NewProjectForm = (props) => {
             due_date: '',
             budget: '',
             complted: false,
-            photo: null,
+            photo: '',
 
         });
     }, [props])
@@ -38,6 +38,14 @@ const NewProjectForm = (props) => {
     const [modal, setModal] = useState(false);
 
     const toggle = () => setModal(!modal);
+
+    // let photo_url = `media/uploads/${formFields.photo}`
+
+    const handleChange = (e) => {
+        this.setState({
+        [e.target.id]: e.target.value
+        })
+    };
 
     const onTitleChange = (e) => {
         setFormFields({
@@ -70,16 +78,48 @@ const NewProjectForm = (props) => {
     const onCompletedChange = (e) => {
         setFormFields({
             ...formFields,
-            completed: e.target.value
+            completed: e.target.checked
         });
     }
 
     const onPhotoChange = (e) => {
         setFormFields({
             ...formFields,
-            photo: e.target.value
+            photo: e.target.files[0]
         });
     }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        // console.log(this.state);
+        let form_data = new FormData();
+        form_data.append('photo', formFields.photo, formFields.photo.name);
+        form_data.append('title', formFields.title);
+        form_data.append('due_date', formFields.due_date);
+        form_data.append('series', formFields.series);
+        form_data.append('budget', formFields.budget);
+        let url = 'http://localhost:8000/projects/';
+        axios.post(url, form_data, {
+        headers: {
+            'content-type': 'multipart/form-data'
+        }
+        })
+            .then(res => {
+            console.log(res.data);
+            })
+            .catch(err => console.log(err))
+
+        setFormFields({
+            title: '',
+            series: '',
+            due_date: '',
+            budget: '',
+            completed: false,
+            photo: '',
+        });
+
+        setModal(false);
+    };
 
     const onFormSubmit = (e) => {
         e.preventDefault();
@@ -89,7 +129,8 @@ const NewProjectForm = (props) => {
             series: formFields.series,
             due_date: formFields.due_date,
             budget: formFields.budget,
-            photo: formFields.photo,
+            completed: formFields.completed,
+            photo: formFields.photo
         });
 
         setFormFields({
@@ -98,7 +139,7 @@ const NewProjectForm = (props) => {
             due_date: '',
             budget: '',
             completed: false,
-            photo: null,
+            photo: '',
         });
 
         setModal(false);
@@ -110,7 +151,7 @@ const NewProjectForm = (props) => {
             <Modal isOpen={modal} toggle={toggle}>
                 <ModalHeader toggle={toggle}>New Project</ModalHeader>
                 <ModalBody>
-                    <Form onSubmit={onFormSubmit} className="text-start">
+                    <Form onSubmit={handleSubmit} className="text-start">
                         <FormGroup>
                             <Label for="title">Title</Label>
                                 <Input
@@ -147,16 +188,19 @@ const NewProjectForm = (props) => {
                             <Label for="completed">Completed</Label>
                                 <Input
                                     type="checkbox"
-                                    value={formFields.completed}
+                                    name="completed"
+                                    checked={formFields.completed}
                                     onChange={onCompletedChange} />
                         </FormGroup>
-                        {/* <FormGroup>
+                        <FormGroup>
                             <Label for="photo">Photo</Label>
                                 <Input
                                     type="file"
                                     value={formFields.photo}
-                                    onChange={onPhotoChange} />
-                        </FormGroup> */}
+                                    accept="image/*"
+                                    onChange={onPhotoChange}
+                                    required/>
+                        </FormGroup>
                         <Input type="Submit" className="btn btn-success">
                         Save
                         </Input>

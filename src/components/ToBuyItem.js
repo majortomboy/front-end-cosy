@@ -1,12 +1,6 @@
 import { React, useEffect, useState } from "react";
 import axios from "axios";
-import ToBuyList from "./ToBuyList";
 import EditItemForm from "./EditItemForm";
-
-// import {
-//     BrowserRouter as Router,
-//     withRouter
-// } from 'react-router-dom';
 
 function ToBuyItem(props) {
 
@@ -36,10 +30,17 @@ function ToBuyItem(props) {
     }
 
     const deleteItem = (item) => {
+        console.log(item)
         axios.delete(`${process.env.REACT_APP_BACKEND_URL}/tobuyitems/${props.item_id}/`, item)
             .then((response) => {
+                // const newItemData = newItems.filter((existingItem) => {
+                //     return existingItem.id !== item.id
+                // })
+
                 console.log(response.data);
                 alert("Item deleted.");
+                window.location.reload(true);
+
             })
             .catch((error) => {
                 console.log(error);
@@ -50,7 +51,7 @@ function ToBuyItem(props) {
     return (
         <tr>
             <td>
-                <input type="checkbox" value={itemData.completed}></input>
+                <input type="checkbox" checked={itemData.completed}></input>
             </td>
             <td>{itemData.description}</td>
             <td>${itemData.price}</td>

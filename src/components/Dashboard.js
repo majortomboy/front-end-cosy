@@ -14,6 +14,23 @@ function Dashboard() {
 
     const [dashboardData, setDashboardData] = useState([]);
     const [partsData, setPartsData] = useState([]);
+    const [toBuyListData, setToBuyListData] = useState([]);
+
+    useEffect (() => {
+        const getItems = () => {
+            axios.get(`${process.env.REACT_APP_BACKEND_URL}/projects/${id}/tobuyitems/`)
+                .then((response) => {
+                    console.log(response.data);
+                    const newToBuyListData = response.data;
+                    setToBuyListData(newToBuyListData);
+                })
+                .catch((error) => {
+                    console.log(`${error.response.data}`)
+                    alert("Could not retrieve data.");
+                });
+    }
+    getItems();
+}, [id]);
 
     const getDashboardInfo = () => {
         axios.get(`${process.env.REACT_APP_BACKEND_URL}/projects/${id}`)
@@ -81,17 +98,27 @@ function Dashboard() {
         return (<Part part_id={part.id} name={part.name} project={part.project}/>)
     });
 
+    const itemTotal = (data) => {
+        let total = 0;
+        console.log(data)
+        data.forEach((item) => {
+            console.log(item.price)
+            total = total + parseInt(item.price)
+        })
+        return total
+    }
+
     return (
         <div className="container-fluid">
             <div className="row border border-primary">
                 <SideNavigation id={id}/>
             <main className="col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4 border border-secondary">
-                <h1 className="h2 flex-column">Project Dashboard - {dashboardData.title}</h1>
+                {/* <h1 className="h2 flex-column">Project Dashboard - {dashboardData.title}</h1> */}
                         {<EditProjectForm project_id={id} title={dashboardData.title} series={dashboardData.series} due_date={dashboardData.due_date} budget={dashboardData.budget} editProject={editDashboardInfo}></EditProjectForm>}
                 <div className="row border border-primary">
                     <div className="col-lg-4 border border-warning">
                         <div className="row">
-                            <img className="rounded border border-primary h-50" src={dashboardData.photo} alt="character"/>
+                            <img className="rounded border border-primary h-50 px-4 py-4" src={dashboardData.photo} alt="character"/>
                         </div>
                         <div className="row">
                             <div className="col"></div>
@@ -112,20 +139,20 @@ function Dashboard() {
                             </div>
                         </div>
                         <div className="row my-5">
-                            <div className="col-lg-5 mx-3">
-                                <div className="card">
+                            <div className="col-lg-5">
+                                <div className="card mx-4 my-4">
                                 <h4 className="card-header">Budget</h4>
-                                    {<BudgetChart></BudgetChart>}
+                                    {<BudgetChart itemTotal={itemTotal(toBuyListData)} budget={dashboardData.budget}></BudgetChart>}
                                     <br></br>
-                                    <p>${dashboardData.budget}</p>
+                                    <h4>${dashboardData.budget}</h4>
                                 </div>
                             </div>
-                            <div className="col-lg-5 mx-3">
-                                <div className="card">
+                            <div className="col-lg-5">
+                                <div className="card mx-4 my-4">
                                 <h4 className="card-header">Completion</h4>
                                 {<CompletionChart></CompletionChart>}
                                 <br></br>
-                                <p>0 %</p>
+                                <h4>0 %</h4>
                                 </div>
                             </div>
                         </div>

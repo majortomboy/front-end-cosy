@@ -2,7 +2,7 @@ import React from "react";
 import { Doughnut } from "react-chartjs-2";
 
 const state = {
-    // labels: ['January', 'February', 'March', 'April', 'May'],
+    labels: ['Remaining','Completed'],
     datasets: [
         {
     label: 'Completion',

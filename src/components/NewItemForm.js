@@ -58,7 +58,7 @@ const NewItemForm = (props) => {
     const onCompletedChange = (e) => {
         setFormFields({
             ...formFields,
-            completed: e.target.value
+            completed: e.target.checked
         });
     }
 
@@ -118,7 +118,7 @@ const NewItemForm = (props) => {
                             <Label for="completed">Completed</Label>
                                 <Input
                                     type="checkbox"
-                                    value={formFields.completed}
+                                    checked={formFields.completed}
                                     onChange={onCompletedChange} />
                         </FormGroup>
                         <Input type="Submit" className="btn btn-success">

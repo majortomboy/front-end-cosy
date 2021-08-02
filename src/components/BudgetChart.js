@@ -1,32 +1,26 @@
-import React from "react";
+import { React, useState, useEffect } from "react";
+import axios from "axios";
+import { useParams } from "react-router-dom";
 import { Doughnut } from "react-chartjs-2";
+import ToBuyList from "./ToBuyList";
 
-const state = {
-    // labels: ['January', 'February', 'March', 'April', 'May'],
-    datasets: [
-        {
-    label: 'Rainfall',
-    backgroundColor: [
-        '#F7F7F7',
-        '#2FDE00',
-        // '#B21F00',
-        // '#00A6B4',
-        // '#6800B4'
-    ],
-    // hoverBackgroundColor: [
-    //     '#501800',
-    //     '#4B5000',
-    //     '#175000',
-    //     '#003350',
-    //     '#35014F'
-    // ],
-    data: [50, 50]
+
+const BudgetChart = (props) => {
+
+    const state = {
+        labels: ['Remaining', 'Spent'],
+        datasets: [
+            {
+        label: 'Budget',
+        backgroundColor: [
+            '#F7F7F7',
+            '#2FDE00'
+        ],
+        data: [(props.budget-props.itemTotal), props.itemTotal]
+        }
+    ]
     }
-]
-}
 
-export default class BudgetChart extends React.Component {
-render() {
     return (
         <div>
         <Doughnut
@@ -46,4 +40,5 @@ render() {
     </div>
     );
 }
-}
+
+export default BudgetChart;

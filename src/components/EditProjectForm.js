@@ -139,7 +139,7 @@ const EditProjectForm = (props) => {
                             <Label for="completed">Completed</Label>
                                 <Input
                                     type="checkbox"
-                                    value={formFields.completed}
+                                    checked={formFields.completed}
                                     onChange={onCompletedChange} />
                         </FormGroup>
                         <FormGroup>

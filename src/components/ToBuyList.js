@@ -15,22 +15,26 @@ function ToBuyList() {
 
     const [toBuyListData, setToBuyListData] = useState([]);
 
-    const getItems = () => {
-        axios.get(`${process.env.REACT_APP_BACKEND_URL}/projects/${id}/tobuyitems/`)
-            .then((response) => {
-                console.log(response.data);
-                const newToBuyListData = response.data;
-                setToBuyListData(newToBuyListData);
-            })
-            .catch((error) => {
-                console.log(`${error.response.data}`)
-                alert("Could not retrieve data.");
-            });
-    }
+    useEffect (() => {
+        const getItems = () => {
+            axios.get(`${process.env.REACT_APP_BACKEND_URL}/projects/${id}/tobuyitems/`)
+                .then((response) => {
+                    console.log(response.data);
+                    const newToBuyListData = response.data;
+                    setToBuyListData(newToBuyListData);
+                })
+                .catch((error) => {
+                    console.log(`${error.response.data}`)
+                    alert("Could not retrieve data.");
 
-    useEffect(() => {
-        getItems();
-    }, [])
+                });
+    }
+    getItems();
+}, [id]);
+
+    // useEffect(() => {
+    //     getItems();
+    // }, [toBuyListData])
 
     const createNewItem = (newItem) => {
         axios.post(`${process.env.REACT_APP_BACKEND_URL}/tobuyitems/`, newItem)
@@ -52,6 +56,16 @@ function ToBuyList() {
     const toBuyListElements = toBuyListData.map((item) => {
         return (<ToBuyItem item_id={item.id} description={item.description} price={item.price} link={item.link} completed={item.completed} project_id={id} />)
     });
+
+    const itemTotal = (data) => {
+        let total = 0;
+        console.log(data)
+        data.forEach((item) => {
+            console.log(item.price)
+            total = total + parseInt(item.price)
+        })
+        return total
+    }
 
     return (
         <div className="container-fluid">

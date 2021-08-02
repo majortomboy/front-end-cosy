@@ -75,6 +75,7 @@ const TaskCard = (props) => {
             .then((response) => {
                 console.log(response.data);
                 alert("Part deleted.");
+                window.location.reload(true);
             })
             .catch((error) => {
                 console.log(error);
@@ -91,9 +92,15 @@ const TaskCard = (props) => {
                         </div>
                     </div>
                     {/* <button className="btn btn-danger" onClick={deletePart}><i className="bi bi-trash" aria-hidden="true"></i></button> */}
-                    <ul className="list-group text-start">
+                    <table>
+                        <th>
+
+                        </th>
                         {taskElements}
-                    </ul>
+                    </table>
+                    {/* <ul className="list-group text-start">
+                        {taskElements}
+                    </ul> */}
                     {<NewTaskForm createNewTask={createNewTask} part_id={props.part_id}></NewTaskForm>}
                 </div>
             </div>
