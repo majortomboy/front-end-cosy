@@ -89,13 +89,26 @@ function Dashboard() {
             });
     };
 
+    const completionPercentage = (parts) => {
+        let part_count = 0;
+        let completed = 0;
+        parts.forEach((part) => {
+            part_count += 1
+            if (part.completed === true) {
+                completed += 1
+            }
+        })
+        let percentage = Math.floor((completed / part_count)*100)
+        return percentage
+    }
+
     useEffect(() => {
         getParts();
 
     }, [])
 
     const displayParts = partsData.map((part) => {
-        return (<Part part_id={part.id} name={part.name} project={part.project}/>)
+        return (<Part part_id={part.id} name={part.name} completed={part.completed} project={part.project}/>)
     });
 
     const itemTotal = (data) => {
@@ -107,6 +120,7 @@ function Dashboard() {
         })
         return total
     }
+
 
     return (
         <div className="container-fluid">
@@ -150,9 +164,9 @@ function Dashboard() {
                             <div className="col-lg-5">
                                 <div className="card mx-4 my-4">
                                 <h4 className="card-header">Completion</h4>
-                                {<CompletionChart></CompletionChart>}
+                                {<CompletionChart completionPercentage={completionPercentage(partsData)}></CompletionChart>}
                                 <br></br>
-                                <h4>0 %</h4>
+                                <h4>{completionPercentage(partsData)} %</h4>
                                 </div>
                             </div>
                         </div>

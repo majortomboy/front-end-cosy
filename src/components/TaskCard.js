@@ -1,24 +1,17 @@
 import { React, useEffect, useState } from "react";
 import axios from "axios";
-// import {
-//     BrowserRouter as Router,
-//     withRouter
-// } from 'react-router-dom';
 import Task from "./Task";
 import NewTaskForm from "./NewTaskForm";
-// import DeleteButton from "./DeleteButton";
 import EditPartForm from "./EditPartForm";
 
 const TaskCard = (props) => {
 
     const [taskData, setTaskData] = useState([]);
     const [partNameData, setPartNameData] = useState(props.name);
-    // console.log(partNameData)
 
     const getTasks = () => {
         axios.get(`${process.env.REACT_APP_BACKEND_URL}/parts/${props.part_id}/tasks/`)
             .then((response) => {
-                // console.log(response.data);
                 const newTaskData = response.data;
                 setTaskData(newTaskData);
             })
@@ -32,11 +25,39 @@ const TaskCard = (props) => {
         getTasks();
     }, [])
 
+    // Where/when do I call this? I want to call it every time the task data changes, I think.
+    // const completePart = (tasks) => {
+    //     tasks.forEach((task) => {
+    //         if (task.completed === false) {
+    //             axios.patch(`${process.env.REACT_APP_BACKEND_URL}/parts/${props.part_id}/`, {
+    //                 completed: false
+    //             })
+    //             return
+    //         }
+    //     })
+    //     axios.patch(`${process.env.REACT_APP_BACKEND_URL}/parts/${props.part_id}/`, {
+    //         completed: true
+    //     })
+    //     //     .then((response) => {
+    //     //     console.log(response.data.completed);
+    //     //     const newPartNameData = response.data.name;
+
+    //     //     setPartNameData(newPartNameData)
+    //     // })
+    //     .catch((error) => {
+    //         console.log(error);
+    //         // alert("Unable to edit part.");
+    //     });
+    // }
+
+    // useEffect(() => {
+    //     completePart();
+    // }, [taskData])
+
     const createNewTask = (newTask) => {
         console.log(newTask)
         axios.post(`${process.env.REACT_APP_BACKEND_URL}/tasks/`, newTask)
             .then((response) => {
-                // console.log(response.data);
                 const newTaskData = response.data
                 const newData = [...taskData]
 
@@ -52,11 +73,11 @@ const TaskCard = (props) => {
     }
 
     const taskElements = taskData.map((task) => {
-        return (<Task task_id={task.id} description={task.description} completed={task.completed} part_id={task.part} />)
+        return (<Task task_id={task.id} description={task.description} completed={task.completed} part_id={task.part}/>)
+        // completePart={completePart(taskData)}
     });
 
     const editPart = (part) => {
-        // console.log(props.part_id)
         axios.put(`${process.env.REACT_APP_BACKEND_URL}/parts/${props.part_id}/`, part)
             .then((response) => {
                 console.log(response.data.name);
@@ -91,16 +112,11 @@ const TaskCard = (props) => {
                             <h5>{partNameData} {<EditPartForm part_id={props.part_id} name={props.name} project={props.project} editPart={editPart} deletePart={deletePart}></EditPartForm>}</h5>
                         </div>
                     </div>
-                    {/* <button className="btn btn-danger" onClick={deletePart}><i className="bi bi-trash" aria-hidden="true"></i></button> */}
                     <table>
                         <th>
-
                         </th>
                         {taskElements}
                     </table>
-                    {/* <ul className="list-group text-start">
-                        {taskElements}
-                    </ul> */}
                     {<NewTaskForm createNewTask={createNewTask} part_id={props.part_id}></NewTaskForm>}
                 </div>
             </div>

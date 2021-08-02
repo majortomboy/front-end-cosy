@@ -34,11 +34,19 @@ const EditPartForm = (props) => {
         });
     }
 
+    const onCompletedChange = (e) => {
+        setFormFields({
+            ...formFields,
+            completed: e.target.checked
+        });
+    }
+
     const onFormSubmit = (e) => {
         e.preventDefault();
 
         props.editPart({
             name: formFields.name,
+            completed: formFields.completed,
             project: props.project
         });
 
@@ -53,12 +61,19 @@ const EditPartForm = (props) => {
                 <ModalBody>
                     <Form onSubmit={onFormSubmit} className="text-start">
                         <FormGroup>
-                            <Label for="title">Name</Label>
+                            <Label for="name">Name</Label>
                                 <Input
                                     type="text"
                                     value={formFields.name}
                                     onChange={onNameChange}
-                                    placeholder="Enter Project Title" />
+                                    placeholder="Enter Part Title" />
+                        </FormGroup>
+                        <FormGroup>
+                            <Label for="title">Completed</Label>
+                                <Input
+                                    type="checkbox"
+                                    checked={formFields.completed}
+                                    onChange={onCompletedChange} />
                         </FormGroup>
                         <Input type="Submit" className="btn btn-success">
                         Save

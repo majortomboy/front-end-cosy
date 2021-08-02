@@ -52,9 +52,6 @@ function ToDoList() {
             });
     }
 
-    // Where does this get passed in/called?
-    // Should this be passed as a prop to a create project button component?
-
     const toDoListElements = toDoListData.map((part) => {
         return (<TaskCard part_id={part.id} name={part.name} project={id}/>)
     });

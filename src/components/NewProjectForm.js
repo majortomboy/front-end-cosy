@@ -18,7 +18,7 @@ const NewProjectForm = (props) => {
         due_date: '',
         budget: '',
         complted: false,
-        photo: '',
+        photo: null,
 
     });
 
@@ -29,7 +29,7 @@ const NewProjectForm = (props) => {
             due_date: '',
             budget: '',
             complted: false,
-            photo: '',
+            photo: null,
 
         });
     }, [props])
@@ -41,11 +41,11 @@ const NewProjectForm = (props) => {
 
     // let photo_url = `media/uploads/${formFields.photo}`
 
-    const handleChange = (e) => {
-        this.setState({
-        [e.target.id]: e.target.value
-        })
-    };
+    // const handleChange = (e) => {
+    //     this.setState({
+    //     [e.target.id]: e.target.value
+    //     })
+    // };
 
     const onTitleChange = (e) => {
         setFormFields({
@@ -115,35 +115,35 @@ const NewProjectForm = (props) => {
             due_date: '',
             budget: '',
             completed: false,
-            photo: '',
+            photo: null,
         });
 
         setModal(false);
     };
 
-    const onFormSubmit = (e) => {
-        e.preventDefault();
+    // const onFormSubmit = (e) => {
+    //     e.preventDefault();
 
-        props.createNewProject({
-            title: formFields.title,
-            series: formFields.series,
-            due_date: formFields.due_date,
-            budget: formFields.budget,
-            completed: formFields.completed,
-            photo: formFields.photo
-        });
+    //     props.createNewProject({
+    //         title: formFields.title,
+    //         series: formFields.series,
+    //         due_date: formFields.due_date,
+    //         budget: formFields.budget,
+    //         completed: formFields.completed,
+    //         photo: formFields.photo
+    //     });
 
-        setFormFields({
-            title: '',
-            series: '',
-            due_date: '',
-            budget: '',
-            completed: false,
-            photo: '',
-        });
+    //     setFormFields({
+    //         title: '',
+    //         series: '',
+    //         due_date: '',
+    //         budget: '',
+    //         completed: false,
+    //         photo: '',
+    //     });
 
-        setModal(false);
-    }
+    //     setModal(false);
+    // }
 
         return (
             <div className="col-lg-12 mt-5 text-end">
@@ -196,8 +196,7 @@ const NewProjectForm = (props) => {
                             <Label for="photo">Photo</Label>
                                 <Input
                                     type="file"
-                                    value={formFields.photo}
-                                    accept="image/*"
+                                    accept="image/png, image/jpeg"
                                     onChange={onPhotoChange}
                                     required/>
                         </FormGroup>
