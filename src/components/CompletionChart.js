@@ -12,8 +12,7 @@ const CompletionChart = (props) => {
         label: 'Completion',
         backgroundColor: [
             '#F7F7F7',
-            '#2FDE00',
-
+            '#2383BE',
         ],
         data: [(100-(props.completionPercentage)), (props.completionPercentage)]
         }

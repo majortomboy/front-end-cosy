@@ -14,7 +14,7 @@ const BudgetChart = (props) => {
         label: 'Budget',
         backgroundColor: [
             '#F7F7F7',
-            '#2FDE00'
+            '#2383BE'
         ],
         data: [(props.budget-props.itemTotal), props.itemTotal]
         }

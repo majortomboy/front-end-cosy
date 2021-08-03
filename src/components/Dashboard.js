@@ -124,45 +124,44 @@ function Dashboard() {
 
     return (
         <div className="container-fluid">
-            <div className="row border border-primary">
+            <div className="row">
                 <SideNavigation id={id}/>
-            <main className="col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4 border border-secondary">
+            <main className="col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4">
                 {/* <h1 className="h2 flex-column">Project Dashboard - {dashboardData.title}</h1> */}
                         {<EditProjectForm project_id={id} title={dashboardData.title} series={dashboardData.series} due_date={dashboardData.due_date} budget={dashboardData.budget} editProject={editDashboardInfo}></EditProjectForm>}
-                <div className="row border border-primary">
-                    <div className="col-lg-4 border border-warning">
+                <div className="row">
+                    <div className="col-lg-4">
                         <div className="row">
-                            <img className="rounded border border-primary h-50 px-4 py-4" src={dashboardData.photo} alt="character"/>
+                            <img className="border border-rounded rounded bg-white h-50 px-4 py-4" src={dashboardData.photo} alt="character"/>
                         </div>
                         <div className="row">
-                            <div className="col"></div>
-                            <div className="row border border-warning">
-                                <div className="col">
+                            <div className="row">
+                                <div className="col mx-5 my-4 border border-rounded rounded bg-white px-4 py-4">
                                     <h4>Parts</h4>
                                     {displayParts}
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div className="col-lg-8 border border-secondary">
-                        <div className="row border border-primary text-start">
-                            <div className="col">
+                    <div className="col-lg-8">
+                        <div className="row text-start">
+                            <div className="col mx-4 border border-rounded rounded bg-white px-4 py-4">
                             <h4>{dashboardData.title}</h4>
                             <p className="fst-italic">{dashboardData.series}</p>
                             <p className="fw-bold">Due Date: {dashboardData.due_date}</p>
                             </div>
                         </div>
                         <div className="row my-5">
-                            <div className="col-lg-5">
-                                <div className="card mx-4 my-4">
+                            <div className="col-lg-5 mx-5 border border-rounded rounded bg-white px-4 py-4">
+                                <div className="card">
                                 <h4 className="card-header">Budget</h4>
                                     {<BudgetChart itemTotal={itemTotal(toBuyListData)} budget={dashboardData.budget}></BudgetChart>}
                                     <br></br>
                                     <h4>${dashboardData.budget}</h4>
                                 </div>
                             </div>
-                            <div className="col-lg-5">
-                                <div className="card mx-4 my-4">
+                            <div className="col-lg-5 border border-rounded rounded bg-white px-4 py-4">
+                                <div className="card">
                                 <h4 className="card-header">Completion</h4>
                                 {<CompletionChart completionPercentage={completionPercentage(partsData)}></CompletionChart>}
                                 <br></br>

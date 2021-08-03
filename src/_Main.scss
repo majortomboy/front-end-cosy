@@ -4,7 +4,12 @@ $secondary: #FEFBF6;
 $light: #FAE6C7;
 $dark: #1F283A;
 $warning: #2383BE;
-$danger: blue;
+// $dark: #E26C25;
+
+.App {
+    text-align: center;
+    background-color: $secondary;
+}
 
 // import bootstrap
 @import '../node_modules/bootstrap/scss/bootstrap';
