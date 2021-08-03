@@ -21,11 +21,11 @@ function Project(props) {
     return (
         <div className="col-lg-4">
             <Link className="navbar-brand" to={`/dashboard/${props.project_id}`}>
-                <div className="card mx-3">
+                <div className="card project-card rounded mx-3">
                     {placeholderImage()}
                     <div className="card-body">
-                        <p className="card-text fw-bold">{props.title}</p>
-                        <p className="card-text fst-italic">{props.series}</p>
+                        <p className="card-text fw-bold text-dark">{props.title}</p>
+                        <p className="card-text fst-italic text-dark">{props.series}</p>
                     </div>
                 </div>
             </Link>

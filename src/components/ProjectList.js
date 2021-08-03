@@ -62,7 +62,6 @@ function ProjectList() {
             <div className="row">
                 <div className="col-lg-11">
                     {<NewProjectForm createNewProject={createNewProject}></NewProjectForm>}
-                    {<ImgUpload></ImgUpload>}
                 </div>
             </div>
             <div className="row my-5 mx-5">

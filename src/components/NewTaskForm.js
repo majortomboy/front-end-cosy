@@ -63,7 +63,7 @@ const NewTaskForm = (props) => {
 
         return (
             <div>
-            <Button color="primary" onClick={toggle} className="btn btn-primary">+ Task</Button>
+            <Button color="secondary" onClick={toggle} className="btn btn-secondary">+ Task</Button>
             <Modal isOpen={modal} toggle={toggle}>
                 <ModalHeader toggle={toggle}>New Task</ModalHeader>
                 <ModalBody>

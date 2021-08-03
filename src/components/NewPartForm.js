@@ -51,7 +51,7 @@ const NewPartForm = (props) => {
 
         return (
             <div className="col-lg-12 mt-5 text-end">
-            <Button color="primary" onClick={toggle} className="btn btn-primary">+ Part</Button>
+            <Button color="secondary" onClick={toggle} className="btn btn-secondary">+ Part</Button>
             <Modal isOpen={modal} toggle={toggle}>
                 <ModalHeader toggle={toggle}>New Part</ModalHeader>
                 <ModalBody>

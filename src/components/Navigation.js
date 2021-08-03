@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, withRouter } from "react-router-dom";
+import { Link, withRouter, NavLink } from "react-router-dom";
 import logo from "./COSYlogo.svg";
 
 function Navigation(props) {
@@ -7,9 +7,9 @@ function Navigation(props) {
     <div className="navigation">
         <nav className="navbar navbar-expand navbar-light bg-primary">
         <div className="container">
-            <Link className="navbar-brand" to="/projects">
+            <NavLink className="navbar-brand" to="/projects">
                 <img src={logo} alt="logo" width="150"></img>
-            </Link>
+            </NavLink>
 
             <div>
             <ul className="navbar-nav ml-auto">
@@ -18,17 +18,17 @@ function Navigation(props) {
                     props.location.pathname === "/projects" ? "active" : ""
                 }`}
                 >
-                <Link className="nav-link" to="/projects">
+                <NavLink className="nav-link link-dark" to="/projects">
                     Projects
-                </Link>
+                </NavLink>
                 </li>
                 <li className={`nav-item  ${
                     props.location.pathname === "/about" ? "active" : ""
                 }`}
                 >
-                <Link className="nav-link" to="/about">
+                <NavLink className="nav-link link-dark" to="/about">
                     About
-                </Link>
+                </NavLink>
                 </li>
             </ul>
             </div>

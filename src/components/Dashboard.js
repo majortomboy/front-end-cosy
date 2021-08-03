@@ -121,34 +121,44 @@ function Dashboard() {
         return total
     }
 
+    const placeholderImage = () => {
+        if (dashboardData.photo !== null) {
+            return (<img className="border border-rounded rounded bg-white h-50 px-4 py-4" src={dashboardData.photo} alt="character"/>)
+        }
+        else {
+            return (<img src="https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-images-image_large.png?format=webp&v=1530129081" alt="placeholder" className="border border-rounded rounded bg-white h-50 px-4 py-4"></img>)
+        }
+    }
+
 
     return (
         <div className="container-fluid">
             <div className="row">
                 <SideNavigation id={id}/>
             <main className="col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4">
-                {/* <h1 className="h2 flex-column">Project Dashboard - {dashboardData.title}</h1> */}
                         {<EditProjectForm project_id={id} title={dashboardData.title} series={dashboardData.series} due_date={dashboardData.due_date} budget={dashboardData.budget} editProject={editDashboardInfo}></EditProjectForm>}
                 <div className="row">
                     <div className="col-lg-4">
                         <div className="row">
-                            <img className="border border-rounded rounded bg-white h-50 px-4 py-4" src={dashboardData.photo} alt="character"/>
+                            {placeholderImage()}
+                            {/* <img className="border border-rounded rounded bg-white h-50 px-4 py-4" src={dashboardData.photo} alt="character"/> */}
                         </div>
-                        <div className="row">
+                        {/* <div className="row"> */}
                             <div className="row">
-                                <div className="col mx-5 my-4 border border-rounded rounded bg-white px-4 py-4">
+                                <div className="col-lg-9 mx-5 my-4 border border-rounded rounded bg-white px-4 py-4">
                                     <h4>Parts</h4>
+                                    <br></br>
                                     {displayParts}
                                 </div>
                             </div>
-                        </div>
+                        {/* </div> */}
                     </div>
                     <div className="col-lg-8">
                         <div className="row text-start">
                             <div className="col mx-4 border border-rounded rounded bg-white px-4 py-4">
-                            <h4>{dashboardData.title}</h4>
-                            <p className="fst-italic">{dashboardData.series}</p>
-                            <p className="fw-bold">Due Date: {dashboardData.due_date}</p>
+                            <p className="display-4">{dashboardData.title}</p>
+                            <h4 className="fst-italic">{dashboardData.series}</h4>
+                            <h4 className="fw-bold">Due Date: {dashboardData.due_date}</h4>
                             </div>
                         </div>
                         <div className="row my-5">

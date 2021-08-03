@@ -1,15 +1,65 @@
 // custom variables
 $primary: #F9A47D;
-$secondary: #FEFBF6;
+$secondary: #2383BE;
 $light: #FAE6C7;
 $dark: #1F283A;
-$warning: #2383BE;
-// $dark: #E26C25;
 
 .App {
     text-align: center;
-    background-color: $secondary;
+    background-color: #FEFBF6;
 }
+
+.nav-item > a:hover {
+    background-image: none;
+    background-color: #F9A47D;
+}
+
+.nav-item > a:active {
+    background-image: none;
+    background-color: #F9A47D;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 25vw;
+    object-fit: cover;
+}
+
+.project-card{
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+      transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+}
+
+.project-card:hover{
+    transform: scale(1.05);
+ box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+}
+
+.icon-success{
+    color: #28A745;
+}
+
+#sidebar {
+    min-height: 100vh;
+}
+
+//import functions & variables
+@import "../node_modules/bootstrap/scss/_functions";
+@import "../node_modules/bootstrap/scss/_variables";
+
+$custom-theme-colors: (
+    "altlight": #FEFBF6,
+    "altdark": #E26C25
+);
+
+$theme-colors: map-merge($custom-theme-colors, $theme-colors);
+
+// .App {
+//     text-align: center;
+//     background-color: #FEFBF6;
+// }
 
 // import bootstrap
 @import '../node_modules/bootstrap/scss/bootstrap';

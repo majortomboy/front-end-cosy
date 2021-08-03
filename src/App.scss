@@ -1,49 +1,43 @@
 // custom variables
 $primary: #F9A47D;
-$secondary: #FEFBF6;
+$secondary: #2383BE;
 $light: #FAE6C7;
 $dark: #1F283A;
-$warning: #2383BE;
-// $dark: #E26C25;
 
-// import bootstrap
-@import '../node_modules/bootstrap/scss/bootstrap';
+// $link-color: $secondary;
+// $link-hover-color: $light;
 
 .App {
     text-align: center;
+    background-color: #FEFBF6;
 }
 
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
+.nav-item > a:hover {
+    background-image: none;
+    background-color: #F9A47D;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-}
-}
-
-.App-header {
-    background-color: #282c34;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+.card-img-top {
+    width: 100%;
+    height: 25vw;
+    object-fit: cover;
 }
 
-.App-link {
-    color: #61dafb;
-}
+//import functions & variables
+@import "../node_modules/bootstrap/scss/_functions";
+@import "../node_modules/bootstrap/scss/_variables";
 
-@keyframes App-logo-spin {
-    from {
-    transform: rotate(0deg);
-    }
-    to {
-    transform: rotate(360deg);
-    }
-}
+$custom-theme-colors: (
+    "altlight": #FEFBF6,
+    "altdark": #E26C25
+);
+
+$theme-colors: map-merge($custom-theme-colors, $theme-colors);
+
+// .App {
+//     text-align: center;
+//     background-color: #FEFBF6;
+// }
+
+// import bootstrap
+@import '../node_modules/bootstrap/scss/bootstrap';

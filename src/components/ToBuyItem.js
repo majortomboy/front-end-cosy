@@ -51,7 +51,7 @@ function ToBuyItem(props) {
     return (
         <tr>
             <td>
-                <input type="checkbox" checked={itemData.completed}></input>
+                <input className="form-check-input" type="checkbox" checked={itemData.completed}></input>
             </td>
             <td>{itemData.description}</td>
             <td>${itemData.price}</td>
