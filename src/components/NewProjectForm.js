@@ -205,7 +205,7 @@ const NewProjectForm = (props) => {
                                     type="file"
                                     accept="image/png, image/jpeg"
                                     onChange={onPhotoChange}
-                                    required/>
+                                    />
                         </FormGroup>
                         <Input type="Submit" className="btn btn-success">
                         Save
