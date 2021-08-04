@@ -5,7 +5,7 @@ import logo from "./COSYlogo.svg";
 function Navigation(props) {
     return (
     <div className="navigation">
-        <nav className="navbar navbar-expand navbar-light bg-primary">
+        <nav id="topnav" className="navbar navbar-expand navbar-light">
         <div className="container">
             <NavLink className="navbar-brand" to="/projects">
                 <img src={logo} alt="logo" width="150"></img>

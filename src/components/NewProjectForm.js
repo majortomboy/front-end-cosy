@@ -154,7 +154,7 @@ const NewProjectForm = (props) => {
 
         return (
             <div className="col-lg-12 mt-5 text-end">
-            <Button color="secondary" onClick={toggle} className="btn btn-secondary text-dark text-white">+ Project</Button>
+            <Button id="project-button" onClick={toggle} className="btn text-white">+ Project</Button>
             <Modal isOpen={modal} toggle={toggle}>
                 <ModalHeader toggle={toggle}>New Project</ModalHeader>
                 <ModalBody>

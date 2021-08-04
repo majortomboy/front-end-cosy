@@ -5,7 +5,7 @@ import { Link, withRouter, NavLink } from "react-router-dom";
 function SideNavigation(props) {
 
     return (
-        <nav id="sidebar" className="col-sm-3 col-md-3 col-lg-2 d-md-block bg-light sidebar text-start">
+        <nav id="sidebar" className="col-sm-3 col-md-3 col-lg-2 d-md-block sidebar text-start">
         <ul className="nav flex-column my-5">
             {/* <li className="nav-item">
                 <NavLink className="nav-link h5 link-secondary" to={`/dashboard/${props.id}/`}>

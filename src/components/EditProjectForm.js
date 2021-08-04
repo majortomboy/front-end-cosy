@@ -98,7 +98,7 @@ const EditProjectForm = (props) => {
 
         return (
             <div className="col-lg-4 offset-lg-9 mb-3">
-            <Button color="secondary" onClick={toggle} className="btn btn-secondary text-white">Edit</Button>
+            <Button id="secondary-button" onClick={toggle} className="btn btn-secondary text-white">Edit</Button>
             <Modal isOpen={modal} toggle={toggle}>
                 <ModalHeader toggle={toggle}>Edit Project</ModalHeader>
                 <ModalBody>

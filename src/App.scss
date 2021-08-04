@@ -9,6 +9,22 @@ $dark: #1F283A;
     background-color: #FEFBF6;
 }
 
+#topnav {
+    background-color: #F9A47D;
+}
+
+#project-button {
+    backgorund-color: #2383BE;
+}
+
+.footer {
+    background-color: #F9A47D;
+}
+
+.nav-link {
+    color: #2383BE;
+}
+
 .nav-item > a:hover {
     background-image: none;
     background-color: #F9A47D;
@@ -43,6 +59,7 @@ $dark: #1F283A;
 
 #sidebar {
     min-height: 100vh;
+    background-color: #FAE6C7;
 }
 
 //import functions & variables
