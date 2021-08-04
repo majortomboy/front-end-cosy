@@ -61,7 +61,7 @@ function ProjectList() {
         <div className="container">
             <div className="row">
                 <div className="col-lg-11">
-                    {<NewProjectForm createNewProject={createNewProject}></NewProjectForm>}
+                    {<NewProjectForm createNewProject={createNewProject} projectData={projectData} setProjectData={setProjectData}></NewProjectForm>}
                 </div>
             </div>
             <div className="row my-5 mx-5">

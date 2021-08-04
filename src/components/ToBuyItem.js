@@ -33,13 +33,14 @@ function ToBuyItem(props) {
         console.log(item)
         axios.delete(`${process.env.REACT_APP_BACKEND_URL}/tobuyitems/${props.item_id}/`, item)
             .then((response) => {
-                // const newItemData = newItems.filter((existingItem) => {
-                //     return existingItem.id !== item.id
-                // })
+                const newItemData = props.toBuyListData.filter((existingItem) => {
+                    return existingItem.id !== props.item_id
+                });
+                // props.setToBuyListData(newItemData)
 
                 console.log(response.data);
-                alert("Item deleted.");
-                window.location.reload(true);
+                // alert("Item deleted.");
+                props.setToBuyListData(newItemData)
 
             })
             .catch((error) => {
@@ -48,10 +49,23 @@ function ToBuyItem(props) {
             })
     }
 
+    const changeCheckbox = () => {
+
+        axios.patch(`${process.env.REACT_APP_BACKEND_URL}/tobuyitems/${props.item_id}/`, {
+            completed: !itemData.completed
+        })
+        .then((response) => {
+            console.log(response.data);
+            const newItemData = response.data;
+
+            setItemData(newItemData)
+        })
+    }
+
     return (
         <tr className="text-start">
             <td>
-                <input className="form-check-input" type="checkbox" checked={itemData.completed}></input>
+                <input className="form-check-input" type="checkbox" checked={itemData.completed} onClick={changeCheckbox}></input>
             </td>
             <td>{itemData.description}</td>
             <td>${itemData.price}</td>

@@ -54,7 +54,7 @@ function ToBuyList() {
     }
 
     const toBuyListElements = toBuyListData.map((item) => {
-        return (<ToBuyItem item_id={item.id} description={item.description} price={item.price} link={item.link} completed={item.completed} project_id={id} />)
+        return (<ToBuyItem item_id={item.id} description={item.description} price={item.price} link={item.link} completed={item.completed} project_id={id} toBuyListData={toBuyListData} setToBuyListData={setToBuyListData}/>)
     });
 
     const itemTotal = (data) => {

@@ -104,8 +104,15 @@ const NewProjectForm = (props) => {
             'content-type': 'multipart/form-data'
         }
         })
-            .then(res => {
-            console.log(res.data);
+            .then(response => {
+            console.log(response.data);
+            const newProjectData = response.data
+            const newData = [...props.projectData]
+
+            newData.push(newProjectData)
+            console.log(newData);
+
+            props.setProjectData(newData)
             })
             .catch(err => console.log(err))
 

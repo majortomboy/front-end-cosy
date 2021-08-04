@@ -43,10 +43,10 @@ function Task(props) {
             })
     }
 
-    const changeCheckbox = (task) => {
+    const changeCheckbox = () => {
 
         axios.patch(`${process.env.REACT_APP_BACKEND_URL}/tasks/${props.task_id}/`, {
-            completed: !task.completed
+            completed: !singleTaskData.completed
         })
         .then((response) => {
             console.log(response.data);
@@ -58,7 +58,7 @@ function Task(props) {
 
     return (
         <tr className="">
-            <td><input className="form-check-input me-2" type="checkbox" checked={singleTaskData.completed}></input></td>
+            <td><input className="form-check-input me-2" type="checkbox" checked={singleTaskData.completed} onClick={changeCheckbox}></input></td>
             <td>{singleTaskData.description}</td>
             <td><EditTaskForm task_id={singleTaskData.task_id} description={singleTaskData.description} completed={singleTaskData.completed} part_id={props.part_id} editTask={editTask}></EditTaskForm></td>
             <td><span color="none" className="btn d-inline-block float-right" onClick={deleteTask}><i className="bi bi-trash" aria-hidden="true"></i></span></td>

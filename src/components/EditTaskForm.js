@@ -36,12 +36,12 @@ const EditTaskForm = (props) => {
         });
     }
 
-    const onCompletedChange = (e) => {
-        setFormFields({
-            ...formFields,
-            completed: e.target.checked
-        });
-    }
+    // const onCompletedChange = (e) => {
+    //     setFormFields({
+    //         ...formFields,
+    //         completed: e.target.checked
+    //     });
+    // }
 
     const onFormSubmit = (e) => {
         e.preventDefault();
@@ -70,13 +70,13 @@ const EditTaskForm = (props) => {
                                     onChange={onDescriptionChange}
                                     placeholder="Enter Task Description" />
                         </FormGroup>
-                        <FormGroup>
+                        {/* <FormGroup>
                             <Label for="completed">Completed</Label>
                                 <Input
                                     type="checkbox"
                                     checked={formFields.completed}
                                     onChange={onCompletedChange}/>
-                        </FormGroup>
+                        </FormGroup> */}
                         <Input type="Submit" className="btn btn-success">
                         Save
                         </Input>
