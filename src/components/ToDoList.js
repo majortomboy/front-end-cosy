@@ -5,7 +5,7 @@ import axios from "axios";
 //     withRouter
 // } from 'react-router-dom';
 import TaskCard from "./TaskCard";
-import { useParams } from "react-router-dom";
+import { useParams, Link, NavLink } from "react-router-dom";
 import SideNavigation from "./SideNavigation";
 import NewPartForm from "./NewPartForm";
 
@@ -89,7 +89,15 @@ function ToDoList() {
             <div className="row">
                 <SideNavigation id={id}/>
                 <main className="col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4">
+                    <div className="d-flex justify-space-between align-items-center">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><NavLink className="link-secondary" to={`/dashboard/${id}/`}>Dashboard</NavLink></li>
+                                    <li class="breadcrumb-item active" aria-current="page">To Do List</li>
+                                </ol>
+                            </nav>
                     {<NewPartForm createNewPart={createNewPart} project_id={id}></NewPartForm>}
+                    </div>
                     <div className="row align-items-center my-5 mx-5">
                         <div className="card-group space-between">
                             {toDoListElements}

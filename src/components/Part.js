@@ -11,7 +11,7 @@ function Part(props) {
     return (
         <div className="col">
             <ul className="list-group text-start">
-                <li className="list-group-item">
+                <li className="list-group-item my-1">
                 <div className="d-flex justify-content-between">
                     <div className="p-2">
                     {props.name}

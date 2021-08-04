@@ -145,7 +145,7 @@ function Dashboard() {
                         </div>
                         {/* <div className="row"> */}
                             <div className="row">
-                                <div className="col-lg-9 mx-5 my-4 border border-rounded rounded bg-white px-4 py-4">
+                                <div className="col-lg-12 my-5 border border-rounded rounded bg-white px-4 py-4">
                                     <h4>Parts</h4>
                                     <br></br>
                                     {displayParts}
@@ -155,28 +155,28 @@ function Dashboard() {
                     </div>
                     <div className="col-lg-8">
                         <div className="row text-start">
-                            <div className="col mx-4 border border-rounded rounded bg-white px-4 py-4">
+                            <div className="col-lg-11 mx-4 border border-rounded rounded bg-white px-4 py-4">
                             <p className="display-4">{dashboardData.title}</p>
                             <h4 className="fst-italic">{dashboardData.series}</h4>
                             <h4 className="fw-bold">Due Date: {dashboardData.due_date}</h4>
                             </div>
                         </div>
                         <div className="row my-5">
-                            <div className="col-lg-5 mx-5 border border-rounded rounded bg-white px-4 py-4">
-                                <div className="card">
-                                <h4 className="card-header">Budget</h4>
+                            <div className="col-lg-5 mx-4 border border-rounded rounded bg-white px-4 py-4">
+                                {/* <div className="card"> */}
+                                <h4 className="pb-3">Budget</h4>
                                     {<BudgetChart itemTotal={itemTotal(toBuyListData)} budget={dashboardData.budget}></BudgetChart>}
                                     <br></br>
                                     <h4>${dashboardData.budget}</h4>
-                                </div>
+                                {/* </div> */}
                             </div>
-                            <div className="col-lg-5 border border-rounded rounded bg-white px-4 py-4">
-                                <div className="card">
-                                <h4 className="card-header">Completion</h4>
+                            <div className="col-lg-5 mx-4 border border-rounded rounded bg-white px-4 py-4">
+                                {/* <div className="card"> */}
+                                <h4 className="pb-3">Completion</h4>
                                 {<CompletionChart completionPercentage={completionPercentage(partsData)}></CompletionChart>}
                                 <br></br>
                                 <h4>{completionPercentage(partsData)} %</h4>
-                                </div>
+                                {/* </div> */}
                             </div>
                         </div>
                     </div>

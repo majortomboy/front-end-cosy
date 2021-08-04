@@ -49,13 +49,13 @@ function ToBuyItem(props) {
     }
 
     return (
-        <tr>
+        <tr className="text-start">
             <td>
                 <input className="form-check-input" type="checkbox" checked={itemData.completed}></input>
             </td>
             <td>{itemData.description}</td>
             <td>${itemData.price}</td>
-            <td><a href={itemData.link} target="_blank" rel="noreferrer noopener">{itemData.link}</a></td>
+            <td><a className="link-secondary" href={itemData.link} target="_blank" rel="noreferrer noopener">{itemData.link}</a></td>
             <td>{<EditItemForm description={itemData.description} price={itemData.price} link={itemData.link} completed={itemData.completed} project_id={props.project_id} editItem={editItem}></EditItemForm>}</td>
             <td><button color="none" className="btn" onClick={deleteItem}><i className="bi bi-trash" aria-hidden="true"></i></button></td>
         </tr>

@@ -1,4 +1,4 @@
-import './_Main.scss';
+import './App.scss';
 // import logo from "./COSYlogo.svg";
 import React from 'react';
 // import axios from 'axios';
