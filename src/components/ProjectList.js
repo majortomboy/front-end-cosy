@@ -3,6 +3,7 @@ import Project from "./Project";
 import NewProjectForm from "./NewProjectForm";
 import FileUpload from "./FileUpload";
 import ImgUpload from "./ImageUploadTest";
+import axiosInstance from '../axios';
 import axios from "axios";
 import {
     BrowserRouter as Router,
@@ -14,9 +15,12 @@ function ProjectList() {
     const [projectData, setProjectData] = useState([]);
 
     const getProjects = () => {
-        axios.get(`${process.env.REACT_APP_BACKEND_URL}/projects/`)
+
+        axiosInstance.get(`projects/`)
             .then((response) => {
                 console.log(response.data);
+                console.log(localStorage.getItem('username'))
+                console.log(localStorage.getItem('id'))
                 const newProjectData = response.data;
                 setProjectData(newProjectData);
             })
@@ -24,6 +28,23 @@ function ProjectList() {
                 console.log(error);
             });
     }
+
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
+    //     console.log(formData);
+
+    //     axiosInstance
+    //         .post(`user/register/`, {
+    //             email: formData.email,
+    //             username: formData.username,
+    //             password: formData.password,
+    //         })
+    //         .then((response) => {
+    //             history.push('/login');
+    //             console.log(response);
+    //             console.log(response.data);
+    //         });
+    // };
 
     useEffect(() => {
         getProjects();

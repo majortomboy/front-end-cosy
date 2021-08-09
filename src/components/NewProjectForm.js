@@ -98,6 +98,7 @@ const NewProjectForm = (props) => {
         form_data.append('due_date', formFields.due_date);
         form_data.append('series', formFields.series);
         form_data.append('budget', formFields.budget);
+        form_data.append('owner', localStorage.getItem('id'));
         let url = 'http://localhost:8000/projects/';
         axios.post(url, form_data, {
         headers: {

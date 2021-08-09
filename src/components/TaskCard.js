@@ -104,12 +104,21 @@ const TaskCard = (props) => {
             })
     }
 
+    const greenCheck = () => {
+        if (props.completed === true) {
+            return (<i className="bi bi-check-circle-fill icon-success"></i>)
+        }
+        else {
+            return
+        }
+    }
+
     return (
             <div className="col-lg-4">
                 <div className="card my-3 mx-3 px-4 py-4">
                     <div className="row">
                         <div className="column">
-                            <h5>{partNameData} {<EditPartForm part_id={props.part_id} name={props.name} project={props.project} editPart={editPart} deletePart={deletePart}></EditPartForm>}</h5>
+                            <h5>{greenCheck()} {partNameData} {<EditPartForm part_id={props.part_id} name={props.name} project={props.project} editPart={editPart} deletePart={deletePart}></EditPartForm>}</h5>
                         </div>
                     </div>
                     <table>

@@ -4,7 +4,7 @@ function Part(props) {
 
     const greenCheck = () => {
         if (props.completed === true) {
-            return (<i className="bi bi-check-circle icon-success"></i>)
+            return (<i className="bi bi-check-circle-fill icon-success"></i>)
         }
     }
 

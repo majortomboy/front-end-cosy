@@ -17,6 +17,9 @@ import Dashboard from './components/Dashboard';
 import Part from './components/Part';
 import ToDoList from './components/ToDoList';
 import ToBuyList from './components/ToBuyList';
+import Register from './components/Register';
+import Login from './components/Login';
+import Logout from './components/Logout';
 
 function App() {
   return (
@@ -24,6 +27,9 @@ function App() {
     <Router>
       <Navigation />
         <Switch>
+          <Route path="/" exact component={() => <Register />} />
+          <Route path="/login" exact component={() => <Login />} />
+          <Route path="/logout" exact component={() => <Logout />} />
           <Route path="/projects" exact component={() => <ProjectList />} />
           <Route path="/about" exact component={() => <About />} />
           <Route path="/dashboard/:id" exact component={Dashboard} />

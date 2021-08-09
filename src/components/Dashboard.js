@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from "react";
 import axios from "axios";
-import { Redirect, useParams } from "react-router-dom";
+import { Redirect, useParams, useHistory } from "react-router-dom";
 import Part from "./Part"
 import SideNavigation from "./SideNavigation";
 import EditProjectForm from "./EditProjectForm";
@@ -68,8 +68,7 @@ function Dashboard() {
         axios.delete(`${process.env.REACT_APP_BACKEND_URL}/projects/${id}/`, project)
             .then((response) => {
                 console.log(response.data);
-                alert("Project deleted.");
-                // <Redirect to="/projects"></Redirect>
+                <Redirect to="/projects"></Redirect>
             })
             .catch((error) => {
                 console.log(error);
@@ -98,6 +97,9 @@ function Dashboard() {
                 completed += 1
             }
         })
+        if (part_count === 0) {
+            return '0'
+        }
         let percentage = Math.floor((completed / part_count)*100)
         return percentage
     }
