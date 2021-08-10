@@ -99,7 +99,7 @@ const NewProjectForm = (props) => {
         form_data.append('series', formFields.series);
         form_data.append('budget', formFields.budget);
         form_data.append('owner', localStorage.getItem('id'));
-        let url = 'http://localhost:8000/projects/';
+        let url = `${process.env.REACT_APP_BACKEND_URL}/projects/`;
         axios.post(url, form_data, {
         headers: {
             'content-type': 'multipart/form-data'
