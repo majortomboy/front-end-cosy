@@ -54,7 +54,7 @@ function ProjectList() {
 
     const createNewProject = (newProject) => {
         console.log(newProject)
-        axios.post(`${process.env.REACT_APP_BACKEND_URL}/projects/`, newProject, {
+        axiosInstance.post(`/projects/`, newProject, {
             headers: {
                 'content-type': 'multipart/form-data'
             }
