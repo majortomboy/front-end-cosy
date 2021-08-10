@@ -1,8 +1,6 @@
 import axios from 'axios';
 
-const baseURL = 'https://cosy-cosplay-planner-api.herokuapp.com';
-
-// const baseURL = 'http://localhost:8000';
+const baseURL = `${process.env.REACT_APP_BACKEND_URL}`;
 
 const axiosInstance = axios.create({
     baseURL: baseURL,
