@@ -1,8 +1,6 @@
 import { React, useEffect, useState } from "react";
 import Project from "./Project";
 import NewProjectForm from "./NewProjectForm";
-import FileUpload from "./FileUpload";
-import ImgUpload from "./ImageUploadTest";
 import axiosInstance from '../axios';
 import axios from "axios";
 import {
