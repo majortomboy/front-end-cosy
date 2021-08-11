@@ -65,35 +65,43 @@ export default function Register() {
     };
 
     return (
-        <Form className="col-lg-5 text-start">
-            Sign Up
-        <FormGroup>
-            <Label for="email">Email Address</Label>
-                <Input
-                    type="text"
-                    value={formData.email}
-                    onChange={onEmailChange}
-                    placeholder="Enter email" />
-        </FormGroup>
-        <FormGroup>
-            <Label for="username">Username</Label>
-                <Input
-                    type="text"
-                    value={formData.username}
-                    onChange={onUsernameChange}
-                    placeholder="Enter username" />
-        </FormGroup>
-        <FormGroup>
-            <Label for="password">Password</Label>
-                <Input
-                    type="text"
-                    value={formData.password}
-                    onChange={onPasswordChange}
-                    placeholder="Enter password" />
-        </FormGroup>
-        <Button type="submit" className="btn btn-success" onClick={handleSubmit}>
-            Sign Up
-        </Button>
-    </Form>
+        <div className="row d-flex justify-content-center align-items-center">
+            <div className="col-12 col-md-9 col-lg-7 col-xl-6">
+                <div className="card my-5">
+                    <div className="card-body p-5">
+                        <h2>Create an account</h2>
+                        <Form className="text-start">
+                        <FormGroup className="mt-3 d-flex align-items-center">
+                            <Label className="me-2" for="email"><i class="bi bi-envelope-fill"></i></Label>
+                                <Input
+                                    type="text"
+                                    value={formData.email}
+                                    onChange={onEmailChange}
+                                    placeholder="Enter email" />
+                        </FormGroup>
+                        <FormGroup className="my-3 d-flex align-items-center">
+                            <Label className="me-2" for="username"><i className="bi bi-person-fill"></i></Label>
+                                <Input
+                                    type="text"
+                                    value={formData.username}
+                                    onChange={onUsernameChange}
+                                    placeholder="Enter username" />
+                        </FormGroup>
+                        <FormGroup className="my-3 d-flex align-items-center">
+                            <Label className="me-2" for="password"><i class="bi bi-lock-fill"></i></Label>
+                                <Input
+                                    type="text"
+                                    value={formData.password}
+                                    onChange={onPasswordChange}
+                                    placeholder="Enter password" />
+                        </FormGroup>
+                        <Button type="submit" className="btn btn-success mt-3 ms-4" onClick={handleSubmit}>
+                            Sign Up
+                        </Button>
+                    </Form>
+                </div>
+            </div>
+        </div>
+    </div>
     )
 }

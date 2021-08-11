@@ -8,6 +8,7 @@ const TaskCard = (props) => {
 
     const [taskData, setTaskData] = useState([]);
     const [partNameData, setPartNameData] = useState(props.name);
+    const [partCompletedData, setPartCompletedData] = useState(props.completed);
 
     const getTasks = () => {
         axios.get(`${process.env.REACT_APP_BACKEND_URL}/parts/${props.part_id}/tasks/`)
@@ -25,30 +26,50 @@ const TaskCard = (props) => {
         getTasks();
     }, [])
 
-    // Where/when do I call this? I want to call it every time the task data changes, I think.
-    // const completePart = (tasks) => {
-    //     tasks.forEach((task) => {
-    //         if (task.completed === false) {
-    //             axios.patch(`${process.env.REACT_APP_BACKEND_URL}/parts/${props.part_id}/`, {
-    //                 completed: false
-    //             })
-    //             return
-    //         }
-    //     })
-    //     axios.patch(`${process.env.REACT_APP_BACKEND_URL}/parts/${props.part_id}/`, {
-    //         completed: true
-    //     })
-    //     //     .then((response) => {
-    //     //     console.log(response.data.completed);
-    //     //     const newPartNameData = response.data.name;
+    const greenCheck = () => {
+        if (props.completed === true) {
+            return (<i className="bi bi-check-circle-fill icon-success"></i>)
+        }
+        else {
+            return (<i></i>)
+        }
+    }
 
-    //     //     setPartNameData(newPartNameData)
-    //     // })
-    //     .catch((error) => {
-    //         console.log(error);
-    //         // alert("Unable to edit part.");
-    //     });
-    // }
+    const completePart = (tasks) => {
+        tasks.forEach((task) => {
+            if (task.completed === false) {
+                axios.patch(`${process.env.REACT_APP_BACKEND_URL}/parts/${props.part_id}/`, {
+                    completed: false
+                })
+                .then((response) => {
+                    console.log(response.data.completed);
+                    const newPartCompletedData = response.data.completed;
+
+                    setPartCompletedData(newPartCompletedData)
+                    greenCheck()
+                })
+                    .catch((error) => {
+                        console.log(error);
+                    // alert("Unable to edit part.");
+                })
+                return
+            }
+        })
+        axios.patch(`${process.env.REACT_APP_BACKEND_URL}/parts/${props.part_id}/`, {
+            completed: true
+        })
+            .then((response) => {
+            console.log(response.data.completed);
+            const newPartCompletedData = response.data.completed;
+
+            setPartCompletedData(newPartCompletedData)
+            greenCheck()
+        })
+            .catch((error) => {
+                console.log(error);
+            // alert("Unable to edit part.");
+        });
+    }
 
     // useEffect(() => {
     //     completePart();
@@ -73,7 +94,7 @@ const TaskCard = (props) => {
     }
 
     const taskElements = taskData.map((task) => {
-        return (<Task task_id={task.id} description={task.description} completed={task.completed} part_id={task.part}/>)
+        return (<Task task_id={task.id} description={task.description} completed={task.completed} part_id={task.part} taskData={taskData} partCompletedData={partCompletedData} completePart={completePart} greenCheck={greenCheck}/>)
         // completePart={completePart(taskData)}
     });
 
@@ -95,22 +116,13 @@ const TaskCard = (props) => {
         axios.delete(`${process.env.REACT_APP_BACKEND_URL}/parts/${props.part_id}/`, part)
             .then((response) => {
                 console.log(response.data);
-                alert("Part deleted.");
+                // alert("Part deleted.");
                 window.location.reload(true);
             })
             .catch((error) => {
                 console.log(error);
                 alert("Unable to delete part.");
             })
-    }
-
-    const greenCheck = () => {
-        if (props.completed === true) {
-            return (<i className="bi bi-check-circle-fill icon-success"></i>)
-        }
-        else {
-            return
-        }
     }
 
     return (

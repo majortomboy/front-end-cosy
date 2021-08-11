@@ -93,12 +93,22 @@ const NewProjectForm = (props) => {
         e.preventDefault();
         // console.log(this.state);
         let form_data = new FormData();
-        form_data.append('photo', formFields.photo, formFields.photo.name);
-        form_data.append('title', formFields.title);
-        form_data.append('due_date', formFields.due_date);
-        form_data.append('series', formFields.series);
-        form_data.append('budget', formFields.budget);
-        form_data.append('owner', localStorage.getItem('id'));
+        // Add if statement to see if photo was entered into the form
+        if (formFields.photo === null) {
+            form_data.append('title', formFields.title);
+            form_data.append('due_date', formFields.due_date);
+            form_data.append('series', formFields.series);
+            form_data.append('budget', formFields.budget);
+            form_data.append('owner', localStorage.getItem('id'));
+        }
+        else if (formFields.photo !== null) {
+            form_data.append('photo', formFields.photo, formFields.photo.name);
+            form_data.append('title', formFields.title);
+            form_data.append('due_date', formFields.due_date);
+            form_data.append('series', formFields.series);
+            form_data.append('budget', formFields.budget);
+            form_data.append('owner', localStorage.getItem('id'));
+        }
         let url = `${process.env.REACT_APP_BACKEND_URL}/projects/`;
         axios.post(url, form_data, {
         headers: {

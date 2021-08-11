@@ -53,6 +53,8 @@ function Task(props) {
             const newTaskData = response.data;
 
             setSingleTaskData(newTaskData)
+            props.completePart(props.taskData)
+
         })
     }
 

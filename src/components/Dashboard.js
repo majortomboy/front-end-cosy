@@ -7,10 +7,12 @@ import EditProjectForm from "./EditProjectForm";
 import DeleteButton from "./DeleteButton";
 import CompletionChart from "./CompletionChart";
 import BudgetChart from "./BudgetChart";
+import moment from "moment";
 
 function Dashboard() {
 
     let { id } = useParams();
+    const history = useHistory();
 
     const [dashboardData, setDashboardData] = useState([]);
     const [partsData, setPartsData] = useState([]);
@@ -68,7 +70,8 @@ function Dashboard() {
         axios.delete(`${process.env.REACT_APP_BACKEND_URL}/projects/${id}/`, project)
             .then((response) => {
                 console.log(response.data);
-                <Redirect to="/projects"></Redirect>
+                history.push('/projects');
+
             })
             .catch((error) => {
                 console.log(error);
@@ -138,7 +141,7 @@ function Dashboard() {
             <div className="row">
                 <SideNavigation id={id}/>
             <main className="col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4">
-                        {<EditProjectForm project_id={id} title={dashboardData.title} series={dashboardData.series} due_date={dashboardData.due_date} budget={dashboardData.budget} editProject={editDashboardInfo}></EditProjectForm>}
+                        {<EditProjectForm project_id={id} title={dashboardData.title} series={dashboardData.series} due_date={dashboardData.due_date} budget={dashboardData.budget} editProject={editDashboardInfo} deleteProject={deleteProject} dashboardData={dashboardData} setDashboardData={setDashboardData}></EditProjectForm>}
                 <div className="row">
                     <div className="col-lg-4">
                         <div className="row">
@@ -160,7 +163,7 @@ function Dashboard() {
                             <div className="col-lg-11 mx-4 border border-rounded rounded bg-white px-4 py-4">
                             <p className="display-4">{dashboardData.title}</p>
                             <h4 className="fst-italic">{dashboardData.series}</h4>
-                            <h4 className="fw-bold">Due Date: {dashboardData.due_date}</h4>
+                            <h4 className="fw-bold">Due Date: {moment(dashboardData.due_date).format("MMMM Do, YYYY")}</h4>
                             </div>
                         </div>
                         <div className="row my-5">
@@ -183,9 +186,6 @@ function Dashboard() {
                         </div>
                     </div>
                 </div>
-                    <div class="row">
-                        {<DeleteButton delete={deleteProject}></DeleteButton>}
-                    </div>
                 <div>
                 </div>
             </main>

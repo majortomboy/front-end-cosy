@@ -12,7 +12,7 @@ import {
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import ProjectList from "./components/ProjectList";
-import About from "./components/About";
+// import About from "./components/About";
 import Dashboard from './components/Dashboard';
 import Part from './components/Part';
 import ToDoList from './components/ToDoList';
@@ -28,10 +28,11 @@ function App() {
       <Navigation />
         <Switch>
           <Route path="/" exact component={() => <Register />} />
+          <Route path="/register" exact component={() => <Register />} />
           <Route path="/login" exact component={() => <Login />} />
           <Route path="/logout" exact component={() => <Logout />} />
           <Route path="/projects" exact component={() => <ProjectList />} />
-          <Route path="/about" exact component={() => <About />} />
+          {/* <Route path="/about" exact component={() => <About />} /> */}
           <Route path="/dashboard/:id" exact component={Dashboard} />
           <Route path="/dashboard/:id/parts" exact component={Part} />
           <Route path="/dashboard/:id/todo" exact component={ToDoList} />
