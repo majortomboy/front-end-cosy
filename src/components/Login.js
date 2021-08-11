@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axiosInstance from '../axios';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import {
     Button,
     Form,
@@ -95,6 +95,7 @@ export default function Login() {
                         <Button type="submit" className="btn btn-success mt-3 ms-4" onClick={handleSubmit}>
                             Sign in
                         </Button>
+                        <p className="text-start text-muted mt-5 mb-0">Don't have an account? <Link to="/register" className="fw-bold text-body"><u>Sign up</u></Link></p>
                     </Form>
                 </div>
             </div>

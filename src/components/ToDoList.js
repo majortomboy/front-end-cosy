@@ -5,7 +5,7 @@ import axios from "axios";
 //     withRouter
 // } from 'react-router-dom';
 import TaskCard from "./TaskCard";
-import { useParams, Link, NavLink } from "react-router-dom";
+import { useParams, NavLink } from "react-router-dom";
 import SideNavigation from "./SideNavigation";
 import NewPartForm from "./NewPartForm";
 

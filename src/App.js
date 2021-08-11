@@ -1,9 +1,5 @@
 import './App.scss';
-// import'./css/Main.min.css';
-// import './App.min.css.map';
-// import logo from "./COSYlogo.svg";
 import React from 'react';
-// import axios from 'axios';
 import {
   BrowserRouter as Router,
   Switch,

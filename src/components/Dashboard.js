@@ -1,10 +1,9 @@
 import { React, useState, useEffect } from "react";
 import axios from "axios";
-import { Redirect, useParams, useHistory } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import Part from "./Part"
 import SideNavigation from "./SideNavigation";
 import EditProjectForm from "./EditProjectForm";
-import DeleteButton from "./DeleteButton";
 import CompletionChart from "./CompletionChart";
 import BudgetChart from "./BudgetChart";
 import moment from "moment";

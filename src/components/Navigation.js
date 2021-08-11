@@ -1,18 +1,15 @@
 import React from "react";
-import { Link, withRouter, NavLink } from "react-router-dom";
+import { withRouter, NavLink } from "react-router-dom";
 import logo from "./COSY-logo.svg";
 
 function Navigation(props) {
 
-    // if user is not authenticated:
-    // if access key is none...:
-
-    if (localStorage.getItem('access_token') === ''){
+    if (!localStorage.getItem('access_token')){
         return (
             <div className="navigation">
                 <nav id="topnav" className="navbar navbar-expand navbar-light">
                 <div className="container">
-                    <NavLink className="navbar-brand" to="/projects">
+                    <NavLink className="navbar-brand" to="/login">
                         <img src={logo} alt="logo" width="150"></img>
                     </NavLink>
 
@@ -65,7 +62,7 @@ function Navigation(props) {
                     props.location.pathname === "/login" ? "active" : ""
                 }`}
                 >
-                <NavLink className="nav-link link-dark" to="/login">
+                <NavLink className="nav-link link-dark" to="/logout">
                     Log Out
                 </NavLink>
                 </li>
