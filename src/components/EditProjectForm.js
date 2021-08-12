@@ -150,7 +150,7 @@ const EditProjectForm = (props) => {
             <Modal isOpen={modal} toggle={toggle}>
                 <ModalHeader toggle={toggle}>Edit Project</ModalHeader>
                 <ModalBody>
-                    <Form onSubmit={handleSubmit} className="text-start">
+                    <Form id="form-font" onSubmit={handleSubmit} className="text-start">
                         <FormGroup className="my-2">
                             <Label for="title">Title</Label>
                                 <Input

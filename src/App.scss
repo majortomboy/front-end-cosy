@@ -1,3 +1,6 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+
 // custom variables
 $primary: #F9A47D;
 $secondary: #2383BE;
@@ -8,15 +11,19 @@ $dark: #1F283A;
     text-align: center;
     background-color: #FEFBF6;
     min-height: 100vh;
+    font-family: 'Ubuntu', sans-serif;
 }
 
 html {
     position: relative;
     min-height: 100%;
+    font-family: 'Ubuntu', sans-serif;
 }
 body {
     margin-bottom: 70px;
+    font-family: 'Ubuntu', sans-serif;
 }
+
 .footer {
     position: absolute;
     bottom: 0;
@@ -30,6 +37,10 @@ body {
 
 .main {
     padding-bottom: 70px;
+}
+
+#form-font {
+    font-family: 'Ubuntu', sans-serif;
 }
 
 #topnav {

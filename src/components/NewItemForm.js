@@ -89,7 +89,7 @@ const NewItemForm = (props) => {
             <Modal isOpen={modal} toggle={toggle}>
                 <ModalHeader toggle={toggle}>New Item</ModalHeader>
                 <ModalBody>
-                    <Form onSubmit={onFormSubmit} className="text-start">
+                    <Form id="form-font" onSubmit={onFormSubmit} className="text-start">
                         <FormGroup>
                             <Label for="description">Description</Label>
                                 <Input

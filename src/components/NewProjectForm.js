@@ -169,7 +169,7 @@ const NewProjectForm = (props) => {
             <Modal isOpen={modal} toggle={toggle}>
                 <ModalHeader toggle={toggle}>New Project</ModalHeader>
                 <ModalBody>
-                    <Form onSubmit={handleSubmit} className="text-start">
+                    <Form id="form-font" onSubmit={handleSubmit} className="text-start">
                         <FormGroup>
                             <Label for="title">Title</Label>
                                 <Input

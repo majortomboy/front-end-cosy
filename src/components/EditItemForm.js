@@ -81,7 +81,7 @@ const EditItemForm = (props) => {
             <Modal isOpen={modal} toggle={toggle}>
                 <ModalHeader toggle={toggle}>Edit Item</ModalHeader>
                 <ModalBody>
-                    <Form onSubmit={onFormSubmit} className="text-start">
+                    <Form id="form-font" onSubmit={onFormSubmit} className="text-start">
                         <FormGroup>
                             <Label for="description">Name</Label>
                                 <Input
