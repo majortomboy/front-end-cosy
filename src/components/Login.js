@@ -87,7 +87,7 @@ export default function Login() {
                         <FormGroup className="my-3 d-flex align-items-center">
                             <Label className="me-2" for="password"><i class="bi bi-lock-fill"></i></Label>
                                 <Input
-                                    type="text"
+                                    type="password"
                                     value={formData.password}
                                     onChange={onPasswordChange}
                                     placeholder="Enter password" />
@@ -95,7 +95,7 @@ export default function Login() {
                         <Button type="submit" className="btn btn-success mt-3 ms-4" onClick={handleSubmit}>
                             Sign in
                         </Button>
-                        <p className="text-start text-muted mt-5 mb-0">Don't have an account? <Link to="/register" className="fw-bold text-body"><u>Sign up</u></Link></p>
+                        <p className="text-start text-muted mt-3 ms-3 mb-0">Don't have an account? <Link to="/register" className="fw-bold text-body"><u>Sign up</u></Link></p>
                     </Form>
                 </div>
             </div>

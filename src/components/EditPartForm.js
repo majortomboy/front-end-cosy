@@ -13,11 +13,13 @@ import {
 const EditPartForm = (props) => {
     const [formFields, setFormFields] = useState({
         name: props.name,
+        completed: props.completed,
     });
 
     useEffect(() => {
         setFormFields({
             name: props.name,
+            completed: props.completed,
         });
     }, [props])
 
@@ -49,6 +51,8 @@ const EditPartForm = (props) => {
             completed: formFields.completed,
             project: props.project
         });
+
+        // props.setPartNameData(formFields.name)
 
         setModal(false);
     }

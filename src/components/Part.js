@@ -6,6 +6,9 @@ function Part(props) {
         if (props.completed === true) {
             return (<i className="bi bi-check-circle-fill icon-success"></i>)
         }
+        else {
+            return (<i></i>)
+        }
     }
 
     return (

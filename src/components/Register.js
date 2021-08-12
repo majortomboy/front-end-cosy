@@ -90,7 +90,7 @@ export default function Register() {
                         <FormGroup className="my-3 d-flex align-items-center">
                             <Label className="me-2" for="password"><i class="bi bi-lock-fill"></i></Label>
                                 <Input
-                                    type="text"
+                                    type="password"
                                     value={formData.password}
                                     onChange={onPasswordChange}
                                     placeholder="Enter password" />
@@ -98,7 +98,7 @@ export default function Register() {
                         <Button type="submit" className="btn btn-success mt-3 ms-4" onClick={handleSubmit}>
                             Sign Up
                         </Button>
-                        <p className="text-start text-muted mt-5 mb-0">Already have an account? <Link to="/login" className="fw-bold text-body"><u>Login here</u></Link></p>
+                        <p className="text-start text-muted mt-3 ms-4 mb-0">Already have an account? <Link to="/login" className="fw-bold text-body"><u>Login here</u></Link></p>
                     </Form>
                 </div>
             </div>

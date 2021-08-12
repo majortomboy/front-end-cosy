@@ -53,7 +53,7 @@ function ToDoList() {
     }
 
     const toDoListElements = toDoListData.map((part) => {
-        return (<TaskCard part_id={part.id} name={part.name} completed={part.completed} project={id}/>)
+        return (<TaskCard part_id={part.id} name={part.name} completed={part.completed} project={id} getParts={getParts}/>)
     });
 
     // const editPartInfo = (part) => {
