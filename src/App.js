@@ -16,6 +16,7 @@ import ToBuyList from './components/ToBuyList';
 import Register from './components/Register';
 import Login from './components/Login';
 import Logout from './components/Logout';
+import ReferencePhotoList from './components/ReferencePhotoList';
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           <Route path="/dashboard/:id/parts" exact component={Part} />
           <Route path="/dashboard/:id/todo" exact component={ToDoList} />
           <Route path="/dashboard/:id/tobuy" exact component={ToBuyList} />
+          <Route path="/dashboard/:id/references" exact component={ReferencePhotoList} />
           {/* <Route path="/dashboard/:id/references" exact component={References} /> */}
         </Switch>
       <Footer />

@@ -62,7 +62,7 @@ const EditTaskForm = (props) => {
                 <ModalHeader toggle={toggle}>Edit Part</ModalHeader>
                 <ModalBody>
                     <Form id="form-font" onSubmit={onFormSubmit} className="text-start">
-                        <FormGroup>
+                        <FormGroup className="my-2">
                             <Label for="description">Description</Label>
                                 <Input
                                     type="text"

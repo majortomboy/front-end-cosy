@@ -90,7 +90,7 @@ const NewItemForm = (props) => {
                 <ModalHeader toggle={toggle}>New Item</ModalHeader>
                 <ModalBody>
                     <Form id="form-font" onSubmit={onFormSubmit} className="text-start">
-                        <FormGroup>
+                        <FormGroup className="my-2">
                             <Label for="description">Description</Label>
                                 <Input
                                     type="text"
@@ -98,7 +98,7 @@ const NewItemForm = (props) => {
                                     onChange={onDescriptionChange}
                                     placeholder="Enter Item Description" />
                         </FormGroup>
-                        <FormGroup>
+                        <FormGroup className="my-2">
                             <Label for="price">Price</Label>
                                 <Input
                                     type="number"

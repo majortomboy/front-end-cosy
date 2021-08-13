@@ -169,8 +169,8 @@ const NewProjectForm = (props) => {
             <Modal isOpen={modal} toggle={toggle}>
                 <ModalHeader toggle={toggle}>New Project</ModalHeader>
                 <ModalBody>
-                    <Form id="form-font" onSubmit={handleSubmit} className="text-start">
-                        <FormGroup>
+                    <Form onSubmit={handleSubmit} className="text-start">
+                        <FormGroup className="my-2">
                             <Label for="title">Title</Label>
                                 <Input
                                     type="text"
@@ -178,7 +178,7 @@ const NewProjectForm = (props) => {
                                     onChange={onTitleChange}
                                     placeholder="Enter Project Title" />
                         </FormGroup>
-                        <FormGroup>
+                        <FormGroup className="my-2">
                             <Label for="series">Series</Label>
                                 <Input
                                     type="text"
@@ -186,7 +186,7 @@ const NewProjectForm = (props) => {
                                     onChange={onSeriesChange}
                                     placeholder="Enter Project Series" />
                         </FormGroup>
-                        <FormGroup>
+                        <FormGroup className="my-2">
                             <Label for="due_date">Due Date</Label>
                                 <Input
                                     type="date"
@@ -194,7 +194,7 @@ const NewProjectForm = (props) => {
                                     onChange={onDueDateChange}
                                     placeholder="Enter Project Due Date" />
                         </FormGroup>
-                        <FormGroup>
+                        <FormGroup className="my-2">
                             <Label for="budget">Budget</Label>
                                 <Input
                                     type="number"
@@ -202,23 +202,23 @@ const NewProjectForm = (props) => {
                                     onChange={onBudgetChange}
                                     placeholder="Enter Project Budget" />
                         </FormGroup>
-                        <FormGroup>
-                            <Label for="completed">Completed</Label>
+                        <FormGroup className="my-2">
+                            <Label for="completed" className="me-2">Completed</Label>
                                 <Input
                                     type="checkbox"
                                     name="completed"
                                     checked={formFields.completed}
                                     onChange={onCompletedChange} />
                         </FormGroup>
-                        <FormGroup>
-                            <Label for="photo">Photo</Label>
+                        <FormGroup className="my-2">
+                            <Label for="photo" className="me-2">Photo</Label>
                                 <Input
                                     type="file"
                                     accept="image/png, image/jpeg"
                                     onChange={onPhotoChange}
                                     />
                         </FormGroup>
-                        <Input type="Submit" className="btn btn-success">
+                        <Input type="Submit" className="btn btn-success my-2">
                         Save
                         </Input>
                     </Form>
