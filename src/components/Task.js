@@ -33,7 +33,6 @@ function Task(props) {
             .then((response) => {
                 console.log(response.data);
                 alert("Task deleted.");
-                // window.location.reload(true);
 
                 setSingleTaskData(singleTaskData)
             })
@@ -51,8 +50,10 @@ function Task(props) {
         .then((response) => {
             console.log(response.data);
             const newTaskData = response.data;
+            // const refreshedTaskData = [...props.taskData]
 
             setSingleTaskData(newTaskData)
+            // props.setTaskData(props.taskData)
 
         })
     }

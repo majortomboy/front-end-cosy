@@ -9,6 +9,7 @@ import {
     Input,
     Label
 } from "reactstrap";
+// import axios from "axios";
 
 const EditPartForm = (props) => {
     const [formFields, setFormFields] = useState({
@@ -22,6 +23,23 @@ const EditPartForm = (props) => {
             completed: props.completed,
         });
     }, [props])
+
+    // const editPart = (part) => {
+    //     axios.put(`${process.env.REACT_APP_BACKEND_URL}/parts/${props.part_id}/`, part)
+    //         .then((response) => {
+    //             console.log(response.data.name);
+    //             console.log(response.data.completed);
+    //             const newPartNameData = response.data.name;
+    //             const newPartCompletedData = response.data.completed;
+
+    //             props.setPartNameData(newPartNameData)
+    //             props.setPartCompletedData(newPartCompletedData)
+    //         })
+    //         .catch((error) => {
+    //             console.log(error);
+    //             alert("Unable to edit part.");
+    //         });
+    // }
 
     // console.log({formFields, props})
     // State for modal being open or closed
@@ -46,13 +64,14 @@ const EditPartForm = (props) => {
     const onFormSubmit = (e) => {
         e.preventDefault();
 
+        // const refreshTaskData = [...props.taskData]
+        // props.setTaskData(refreshTaskData)
+
         props.editPart({
             name: formFields.name,
             completed: formFields.completed,
             project: props.project
         });
-
-        // props.setPartNameData(formFields.name)
 
         setModal(false);
     }

@@ -6,7 +6,7 @@ import {
     Route,
     Link
 } from 'react-router-dom';
-import { Modal, ModalBody } from "reactstrap";
+import { Modal, ModalHeader, ModalBody } from "reactstrap";
 
 function Photo(props) {
 
@@ -41,6 +41,7 @@ function Photo(props) {
                             <i className="bi bi-trash" aria-hidden="true"></i>
                             </button>
                             <Modal isOpen={modal} toggle={toggle}>
+                                {/* <ModalHeader toggle={toggle}></ModalHeader> */}
                                 <img src={props.photo} alt="fullsize reference" />
                             </Modal>
                         </div>

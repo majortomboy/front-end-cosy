@@ -8,18 +8,18 @@ import TaskCard from "./TaskCard";
 import { useParams, NavLink } from "react-router-dom";
 import SideNavigation from "./SideNavigation";
 import NewPartForm from "./NewPartForm";
+// import ToDoPart from "./ToDoPart";
 
 function ToDoList() {
 
     let { id } = useParams();
-    // console.log(id)
 
     const [toDoListData, setToDoListData] = useState([]);
 
     const getParts = () => {
         axios.get(`${process.env.REACT_APP_BACKEND_URL}/projects/${id}/parts/`)
             .then((response) => {
-                console.log(response.data);
+                // console.log(response.data);
                 const newToDoListData = response.data;
                 setToDoListData(newToDoListData);
             })
@@ -53,8 +53,39 @@ function ToDoList() {
     }
 
     const toDoListElements = toDoListData.map((part) => {
-        return (<TaskCard part_id={part.id} name={part.name} completed={part.completed} project={id} getParts={getParts}/>)
+        return (<TaskCard part_id={part.id} name={part.name} completed={part.completed} project={id} toDoListData={toDoListData} setToDoListData={setToDoListData}/>)
     });
+
+    return (
+        <div className="container-fluid">
+            <div className="row">
+                <SideNavigation id={id}/>
+                <main className="col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4">
+                    <div className="d-flex justify-space-between align-items-center">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><NavLink className="link-secondary" to={`/dashboard/${id}/`}>Dashboard</NavLink></li>
+                                    <li class="breadcrumb-item active" aria-current="page">To Do List</li>
+                                </ol>
+                            </nav>
+                    {<NewPartForm createNewPart={createNewPart} project_id={id}></NewPartForm>}
+                    </div>
+                    <div className="row align-items-center my-5 mx-5">
+                        <div className="card-group space-between">
+                            {toDoListElements}
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+    )
+}
+
+export default ToDoList;
+
+    // const toDoParts = toDoListData.map((part) => {
+    //     return (<ToDoPart part_id={part.id} name={part.name} completed={part.completed} project={id} getParts={getParts}/>)
+    // });
 
     // const editPartInfo = (part) => {
     //     console.log(part)
@@ -83,30 +114,3 @@ function ToDoList() {
     //             alert("Unable to delete project.");
     //         })
     // }
-
-    return (
-        <div className="container-fluid">
-            <div className="row">
-                <SideNavigation id={id}/>
-                <main className="col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4">
-                    <div className="d-flex justify-space-between align-items-center">
-                            <nav aria-label="breadcrumb">
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><NavLink className="link-secondary" to={`/dashboard/${id}/`}>Dashboard</NavLink></li>
-                                    <li class="breadcrumb-item active" aria-current="page">To Do List</li>
-                                </ol>
-                            </nav>
-                    {<NewPartForm createNewPart={createNewPart} project_id={id}></NewPartForm>}
-                    </div>
-                    <div className="row align-items-center my-5 mx-5">
-                        <div className="card-group space-between">
-                            {toDoListElements}
-                        </div>
-                    </div>
-                </main>
-            </div>
-        </div>
-    )
-}
-
-export default ToDoList;
