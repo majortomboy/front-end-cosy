@@ -106,7 +106,7 @@ const NewItemForm = (props) => {
                                     onChange={onPriceChange}
                                     placeholder="Enter Item Price" />
                         </FormGroup>
-                        <FormGroup>
+                        <FormGroup className="my-2">
                             <Label for="link">Link</Label>
                                 <Input
                                     type="url"
@@ -114,14 +114,14 @@ const NewItemForm = (props) => {
                                     onChange={onLinkChange}
                                     placeholder="Enter Item Link" />
                         </FormGroup>
-                        <FormGroup>
-                            <Label for="completed">Completed</Label>
+                        <FormGroup className="my-2">
+                            <Label for="completed" className="me-2">Completed</Label>
                                 <Input
                                     type="checkbox"
                                     checked={formFields.completed}
                                     onChange={onCompletedChange} />
                         </FormGroup>
-                        <Input type="Submit" className="btn btn-success">
+                        <Input type="Submit" className="btn btn-success my-2">
                         Save
                         </Input>
                     </Form>

@@ -83,7 +83,7 @@ const EditPartForm = (props) => {
                 <ModalHeader toggle={toggle}>Edit Part</ModalHeader>
                 <ModalBody>
                     <Form id="form-font" onSubmit={onFormSubmit} className="text-start">
-                        <FormGroup>
+                        <FormGroup className="my-2">
                             <Label for="name">Name</Label>
                                 <Input
                                     type="text"
@@ -91,8 +91,8 @@ const EditPartForm = (props) => {
                                     onChange={onNameChange}
                                     placeholder="Enter Part Title" />
                         </FormGroup>
-                        <FormGroup>
-                            <Label for="title">Completed</Label>
+                        <FormGroup className="my-2">
+                            <Label for="title" className="me-2">Completed</Label>
                                 <Input
                                     type="checkbox"
                                     checked={formFields.completed}
@@ -101,7 +101,9 @@ const EditPartForm = (props) => {
                         <Input type="Submit" className="btn btn-success">
                         Save
                         </Input>
-                        <button className="btn btn-danger" onClick={props.deletePart}><i className="bi bi-trash" aria-hidden="true"></i></button>
+                        <FormGroup className="d-flex justify-content-end">
+                        <button className="btn btn-danger mt-4 justify-content-end" onClick={props.deletePart}><i className="bi bi-trash" aria-hidden="true"></i></button>
+                        </FormGroup>
                     </Form>
                 </ModalBody>
             </Modal>

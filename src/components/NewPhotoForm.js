@@ -101,7 +101,7 @@ const NewPhotoForm = (props) => {
                                     placeholder="Enter Photo Description" />
                         </FormGroup> */}
                         <FormGroup className="my-2">
-                            <Label for="photo">Photo</Label>
+                            <Label for="photo" className="me-2">Photo</Label>
                                 <Input
                                     type="file"
                                     accept="image/png, image/jpeg"

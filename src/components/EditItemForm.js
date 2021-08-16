@@ -82,7 +82,7 @@ const EditItemForm = (props) => {
                 <ModalHeader toggle={toggle}>Edit Item</ModalHeader>
                 <ModalBody>
                     <Form id="form-font" onSubmit={onFormSubmit} className="text-start">
-                        <FormGroup>
+                        <FormGroup className="my-2">
                             <Label for="description">Name</Label>
                                 <Input
                                     type="text"
@@ -90,7 +90,7 @@ const EditItemForm = (props) => {
                                     onChange={onDescriptionChange}
                                     placeholder="Enter Item Title" />
                         </FormGroup>
-                        <FormGroup>
+                        <FormGroup className="my-2">
                             <Label for="price">Price</Label>
                                 <Input
                                     type="number"
@@ -98,7 +98,7 @@ const EditItemForm = (props) => {
                                     onChange={onPriceChange}
                                     placeholder="Enter Item Title" />
                         </FormGroup>
-                        <FormGroup>
+                        <FormGroup className="my-2">
                             <Label for="link">Link</Label>
                                 <Input
                                     type="url"
@@ -106,8 +106,8 @@ const EditItemForm = (props) => {
                                     onChange={onLinkChange}
                                     placeholder="Enter Item Title" />
                         </FormGroup>
-                        <FormGroup>
-                            <Label for="completed">Purchased</Label>
+                        <FormGroup className="my-2">
+                            <Label for="completed" className="me-2">Purchased</Label>
                                 <Input
                                     type="checkbox"
                                     checked={formFields.completed}
