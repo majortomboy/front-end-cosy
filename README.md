@@ -27,17 +27,14 @@ Cosy relies on:
   - CreateReactApp
   - ReactStrap
 - Bootstrap
+  - Sass 
 - AWS S3
 
 ## Environment Setup
 
 1. Clone this repository
 
-3. Install front-end dependencies:
-
-   ```
-   $ npm install
-   ```
+3. Install front-end dependencies with ```$ npm install```
    
 3. Clone the [backend repository](https://github.com/majortomboy/back-end-cosy/) separately
 
@@ -48,17 +45,9 @@ Cosy relies on:
    $ source venv/bin/activate
    ```
    
-5. Install backend dependencies:
-
-   ```
-   $ pip install requirements.txt
-   ```
+5. Install backend dependencies with ```$ pip install requirements.txt```
    
-6. Add a ```.env``` file (make sure to add this to a ```.gitignore``` file)
-
-   ```
-   $ touch .env
-   ```
+6. Add a ```.env``` file with ```$touch .env``` (make sure to add this to a ```.gitignore``` file)
    
 7. To the ```.env``` file, add the following variables:
 
@@ -73,17 +62,9 @@ Cosy relies on:
     AWS_S3_REGION_NAME = <AWS region name>
    ```
    
-8. Run your backend server with:
-
-   ```
-   $ python manage.py runserver
-   ```
+8. Run your backend server with ```$ python manage.py runserver```
    
-9. Run your front end server with:
-
-    ```
-    npm start
-    ```
+9. Run your front end server with ```npm start```
 
 
 Cosy is developed by [Ada Developers Academy](https://adadevelopersacademy.org/) Cohort 15 student Sidney DuPont as a capstone project.<br>
