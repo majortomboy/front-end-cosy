@@ -6,11 +6,14 @@ Creating a cosplay is a detailed, lengthy process that requires cosplayers to ke
 
 Cosy provides a centralized cosplay project management system, to help cosplayers keep track of their to do lists, budget, photos, and more and avoid the dreaded “con crunch” the night before a costume’s debut.
 
-## Demo
+## Demo Video
 
 <a style="float:right" href="https://drive.google.com/file/d/1jQ3G5AN37JsWgGrKIcUL6m9CBoBbylQ1/view?usp=sharing" target="_blank">
-  <img alt="Cosy Demo Video" width="800" src="https://drive.google.com/file/d/1McOTvAC5-BTG1co5Bcx00U6nIDaxd5LP/view?usp=sharing" />
 </a>
+
+## Deployed App
+
+You can find a deployed version of Cosy on Heroku [here](https://cosy-cosplay-planner.herokuapp.com/)
 
 ## Dependencies
 
@@ -21,8 +24,8 @@ Cosy relies on:
   - DRF Simple JWT
 - PostgreSQL
 - React.js
-  - ReactStrap
   - CreateReactApp
+  - ReactStrap
 - Bootstrap
 - AWS S3
 
@@ -34,15 +37,20 @@ Cosy relies on:
    $ npm install
    ```
 3. Clone the [backend repository](https://github.com/majortomboy/back-end-cosy/) separately
-4. Install backend dependencies:
+4. Set up a virtual environment for the backend and activate the environment:
+   ```
+   $ python3 -m venv venv
+   $ source venv/bin/activate
+   ```
+5. Install backend dependencies:
    ```
    $ pip install requirements.txt
    ```
-5. Add a ```.env``` file and add this to a ```.gitignore``` file
+6. Add a ```.env``` file (make sure to add this to a ```.gitignore``` file)
    ```
    $ touch .env
    ```
-6. To the ```.env``` file, add the following variables:
+7. To the ```.env``` file, add the following variables:
    ```
     SECRET_KEY = <Django key provided upon project start>
     DEVELOPMENT_DATABASE_PASSWORD = <local Postgres database password>
@@ -51,6 +59,15 @@ Cosy relies on:
     AWS_STORAGE_BUCKET_NAME = <AWS bucket name>
     AWS_S3_REGION_NAME = <AWS region name>
    ```
+   Note: You will need to have an AWS account in order to
+8. Run your backend server with:
+   ```
+   $ python manage.py runserver
+   ```
+9. Run your front end server with:
+    ```
+    npm start
+    ```
 
 
 Cosy is developed by [Ada Developers Academy](https://adadevelopersacademy.org/) Cohort 15 student Sidney DuPont as a capstone project.<br>
