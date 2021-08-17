@@ -1,70 +1,57 @@
-# Getting Started with Create React App
+# Cosy Cosplay Planner
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Introduction
 
-## Available Scripts
+Creating a cosplay is a detailed, lengthy process that requires cosplayers to keep track of many literal and figurative moving parts. From prop making to costume sewing to wig styling, organizing your time and materials is half the battle to making a great costume.
 
-In the project directory, you can run:
+Cosy provides a centralized cosplay project management system, to help cosplayers keep track of their to do lists, budget, photos, and more and avoid the dreaded “con crunch” the night before a costume’s debut.
 
-### `yarn start`
+## Demo
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<a style="float:right" href="https://drive.google.com/file/d/**1jQ3G5AN37JsWgGrKIcUL6m9CBoBbylQ1**/view?usp=sharing" target="_blank">
+  <img alt="Cosy Demo Video" width="800" src="https://drive.google.com/file/d/1McOTvAC5-BTG1co5Bcx00U6nIDaxd5LP/view?usp=sharing" />
+</a>
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Dependencies
 
-### `yarn test`
+Cosy relies on:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Django
+  - Django REST Framework
+  - DRF Simple JWT
+- PostgreSQL
+- React.js
+  - ReactStrap
+  - CreateReactApp
+- Bootstrap
+- AWS S3
 
-### `yarn build`
+## Environment Setup
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Clone this repository
+2. Install front-end dependencies:
+   ```
+   $ npm install
+   ```
+3. Clone the [backend repository](https://github.com/majortomboy/back-end-cosy/) separately
+4. Install backend dependencies:
+   ```
+   $ pip install requirements.txt
+   ```
+5. Add a ```.env``` file and add this to a ```.gitignore``` file
+   ```
+   $ touch .env
+   ```
+6. To the ```.env``` file, add the following variables:
+   ```
+    SECRET_KEY = <Django key provided upon project start>
+    DEVELOPMENT_DATABASE_PASSWORD = <local Postgres database password>
+    AWS_ACCESS_KEY_ID = <AWS access key ID>
+    AWS_SECRET_ACCESS_KEY = <AWS secret access key>
+    AWS_STORAGE_BUCKET_NAME = <AWS bucket name>
+    AWS_S3_REGION_NAME = <AWS region name>
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Cosy is developed by [Ada Developers Academy](https://adadevelopersacademy.org/) Cohort 15 student Sidney DuPont as a capstone project.<br>
+Cosy logo designed by [Ren Blakely](https://renblakely.com/)
