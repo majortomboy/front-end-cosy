@@ -8,8 +8,7 @@ Cosy provides a centralized cosplay project management system, to help cosplayer
 
 ## Demo Video
 
-<a style="float:right" href="https://drive.google.com/file/d/1jQ3G5AN37JsWgGrKIcUL6m9CBoBbylQ1/view?usp=sharing" target="_blank"><img alt="Demo Video" width="800" src="https://photos.app.goo.gl/NbSQuSmnUmpUcES58" />
-</a>
+[Demo Video](https://drive.google.com/file/d/1jQ3G5AN37JsWgGrKIcUL6m9CBoBbylQ1/view?usp=sharing)
 
 ## Deployed App
 
